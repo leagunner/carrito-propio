@@ -1,0 +1,125 @@
+crear carpeta build sin cortar y pegar 
+
+npm.cmd run build -- --outDir "C:\Users\Metalúrgica Exhibe\Develop\Lista-precios\public"
+
+COMO VISUALIZAR LA PAGINA DE METALURGICA EXHIBE
+================================================
+
+Este proyecto utiliza Astro. Para visualizarlo no hay que usar Go Live,
+porque Go Live solo sirve archivos estaticos y no interpreta los archivos
+.astro.
+
+La pagina se visualiza usando el servidor de desarrollo de Astro.
+
+
+METODO 1: DESDE LA TERMINAL
+===========================
+
+1. Abre una terminal en VS Code.
+
+2. Entra en la carpeta del proyecto. Ejecuta:
+
+   cd "C:\Users\Metalúrgica Exhibe\Develop\nueva web exhibe\Meralurgica Exhibe V2"
+
+3. Inicia el servidor con:
+
+   npm.cmd run dev
+
+4. Cuando el servidor este listo, abre esta direccion en el navegador:
+
+   http://localhost:4321/
+
+5. Mientras la terminal siga abierta, los cambios que hagas en los archivos
+   se actualizaran automaticamente en el navegador. Si no se actualizan,
+   recarga la pagina.
+
+6. Para detener el servidor, vuelve a la terminal y presiona:
+
+   Ctrl + C
+
+
+METODO 2: DESDE RUN AND DEBUG DE VS CODE
+========================================
+
+1. Abre en VS Code la carpeta:
+
+   C:\Users\Metalúrgica Exhibe\Develop\nueva web exhibe
+
+2. Abre la vista "Run and Debug" de VS Code.
+
+3. Selecciona la configuracion:
+
+   Astro: servidor de desarrollo
+
+4. Presiona el boton de iniciar.
+
+5. Abre en el navegador:
+
+   http://localhost:4321/
+
+Esta configuracion entra automaticamente en la subcarpeta
+"Meralurgica Exhibe V2", que es donde esta el package.json.
+
+
+SI APARECE EL ERROR ENOENT PACKAGE.JSON
+=======================================
+
+Si aparece un error parecido a este:
+
+   Could not read package.json
+
+significa que la terminal esta ubicada en la carpeta incorrecta.
+
+La terminal debe estar dentro de:
+
+   C:\Users\Metalúrgica Exhibe\Develop\nueva web exhibe\Meralurgica Exhibe V2
+
+Puedes comprobarlo ejecutando:
+
+   dir package.json
+
+Si el archivo aparece, ejecuta nuevamente:
+
+   npm.cmd run dev
+
+Si no aparece, vuelve a entrar en la carpeta correcta con:
+
+   cd "C:\Users\Metalúrgica Exhibe\Develop\nueva web exhibe\Meralurgica Exhibe V2"
+
+
+SI POWERSHELL BLOQUEA NPM
+=========================
+
+En Windows utiliza:
+
+   npm.cmd run dev
+
+en lugar de:
+
+   npm run dev
+
+El comando npm.cmd evita el bloqueo de ejecucion de scripts de PowerShell.
+
+
+DIRECCIONES IMPORTANTES
+=======================
+
+Pagina principal:
+   http://localhost:4321/
+
+Servidor de desarrollo:
+   npm.cmd run dev
+
+Compilar para comprobar errores:
+   npm.cmd run build
+
+Detener el servidor:
+   Ctrl + C
+
+
+RECORDATORIO
+============
+
+No abrir "index.astro" directamente en el navegador.
+No utilizar Go Live para este proyecto.
+Siempre iniciar Astro y visitar http://localhost:4321/.

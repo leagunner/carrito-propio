@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ColeccionCatalogo from '../components/ColeccionCatalogo.astro';
+import productos from '../data/productos.json';
+
+const ordenPorDefecto = [
+  'jaulas', 'cajasTransporte', 'cajasPeluqueria', 'corrales', 'cercos', 'aves', 'racks', 'parideras',
+  'varios1', 'varios2', 'canastos',
+  ...(productos.listasPersonalizadas ?? []).map((lista) => `lista:${lista.clave}`),
+];
+const disponibles = new Set([
+  ...Object.keys(productos).filter((clave) => !['listasPersonalizadas', 'ordenColecciones', 'guiasVisuales'].includes(clave)),
+  ...(productos.listasPersonalizadas ?? []).map((lista) => `lista:${lista.clave}`),
+]);
+const ordenColecciones = (productos.ordenColecciones ?? ordenPorDefecto).filter((clave) => disponibles.has(clave));
+const sectionIdForCollection = (clave: string) => clave.startsWith('lista:')
+  ? clave.slice('lista:'.length)
+  : clave === 'cajasTransporte' ? 'cajas' : clave === 'cajasPeluqueria' ? 'cajas-peluqueria' : clave;
+const catalogSectionMap = ordenColecciones.map((listKey) => ({ listKey, sectionId: sectionIdForCollection(listKey) }));
+const nombresColecciones: Record<string, string> = {
+  jaulas: 'Caniles', cajasTransporte: 'Cajas de transporte', cajasPeluqueria: 'Cajas de transporte y mesa de peluquería',
+  corrales: 'Corrales', cercos: 'Cercos lineales y módulos', aves: 'Jaulas para aves', racks: 'Racks apilables',
+  parideras: 'Parideras y piletas', varios1: 'Productos varios 1', varios2: 'Productos varios 2', canastos: 'Canastos extraíbles', mallas: 'Mallas metálicas',
+};
+const siteUrl = 'https://catalogo-metalurgica-exhibe.web.app/';
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'OnlineStore',
+      '@id': `${siteUrl}#store`,
+      name: 'Metalúrgica Exhibe',
+      url: siteUrl,
+      description: 'Catálogo de productos metalúrgicos para mascotas, hogar y comercio en Argentina.',
+      areaServed: { '@type': 'Country', name: 'Argentina' },
+      sameAs: [
+        'https://www.facebook.com/metalurgicaexhibe',
+        'https://www.instagram.com/metalurgica_exhibe',
+        'https://wa.me/541123419299',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}#website`,
+      name: 'Metalúrgica Exhibe: catálogo de productos',
+      url: siteUrl,
+      publisher: { '@id': `${siteUrl}#store` },
+      inLanguage: 'es-AR',
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': `${siteUrl}#catalogo`,
+      name: 'Catálogo de productos de Metalúrgica Exhibe',
+      url: siteUrl,
+      isPartOf: { '@id': `${siteUrl}#website` },
+      about: { '@id': `${siteUrl}#store` },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: ordenColecciones.length,
+        itemListElement: ordenColecciones.map((clave, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: nombresColecciones[clave] ?? clave.replace(/^lista:/, ''),
+        })),
+      },
+    },
+  ],
+};
+---
+
+<Layout title="Metalúrgica Exhibe | Catálogo de productos" schema={schema}>
+  <Header listasPersonalizadas={productos.listasPersonalizadas ?? []} ordenColecciones={ordenColecciones} />
+
+  <main class="container">
+    <p class="catalog-intro">Encontrá caniles, corrales, jaulas, racks, cajas y otros productos metálicos. Consultá disponibilidad y comprá directo por WhatsApp.</p>
+    <p class="catalog-help">Toca el título de una categoría para ver la lista completa.</p>
+    {ordenColecciones.map((clave) => <ColeccionCatalogo clave={clave} productos={productos} />)}
+  </main>
+</Layout>
+
+<script define:vars={{ catalogSectionMap }}>
+  let activeSectionId = null;
+  let lastStableScrollY = window.scrollY;
+  let scrollCommitTimer = null;
+  let scrollAnimationFrame = null;
+  let isBackScrollAnimating = false;
+  let ignoreNextModalPopstate = false;
+
+  const modalParamNames = ['lista', 'uid', 'item', 'share'];
+  const getModalRequestFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const listKey = params.get('lista');
+    const itemId = params.get('uid') || params.get('item');
+    const sharePath = params.get('share');
+    return listKey && itemId ? { listKey, itemId, sharePath } : null;
+  };
+
+  const sharePathFor = (listKey, itemId) => {
+    const isCustomList = listKey.startsWith('lista:');
+    const collectionType = isCustomList ? 'lista' : 'original';
+    const collectionKey = isCustomList ? listKey.slice('lista:'.length) : listKey;
+    return `/compartir/${collectionType}/${encodeURIComponent(collectionKey)}/${encodeURIComponent(String(itemId))}/`;
+  };
+
+  const modalIdFor = (listKey, sectionId) => listKey.startsWith('lista:')
+    ? `modal-lista-${listKey.slice('lista:'.length)}`
+    : `modal-${sectionId}`;
+
+  const findCatalogSection = (listKey) => [...document.querySelectorAll('[data-catalog-section]')]
+    .find((section) => section.dataset.catalogKey === listKey);
+
+  const hasCatalogItem = (listKey, itemId) => {
+    const section = findCatalogSection(listKey);
+    if (!section) return false;
+    return [...section.querySelectorAll('.product-row, .custom-row')].some((row) => (
+      row.dataset.productUid === itemId
+      || row.dataset.rowUid === itemId
+      || row.dataset.productId === itemId
+      || row.dataset.rowId === itemId
+    ));
+  };
+
+  const dispatchModalOpen = (listKey, itemId) => {
+    document.dispatchEvent(new CustomEvent('catalog:open-modal', { detail: { listKey, itemId } }));
+  };
+
+  const openModalFromUrl = (request, { replaceBase = false } = {}) => {
+    const collection = catalogSectionMap.find((entry) => entry.listKey === request.listKey);
+    if (!collection || !hasCatalogItem(request.listKey, request.itemId)) return;
+    const modalId = modalIdFor(collection.listKey, collection.sectionId);
+    if (replaceBase) {
+      const modalUrl = request.sharePath?.startsWith('/compartir/')
+        ? new URL(request.sharePath, window.location.origin)
+        : new URL(window.location.href);
+      const baseUrl = new URL(window.location.href);
+      modalParamNames.forEach((name) => baseUrl.searchParams.delete(name));
+      baseUrl.hash = '';
+      history.replaceState({ ...history.state, catalogSection: null }, '', baseUrl);
+      const sectionUrl = new URL(baseUrl);
+      sectionUrl.hash = `#${collection.sectionId}`;
+      history.pushState({ ...history.state, catalogSection: collection.sectionId }, '', sectionUrl);
+      history.pushState({ ...history.state, modalId, modalList: request.listKey, modalItem: request.itemId, catalogSection: collection.sectionId }, '', modalUrl);
+    }
+    document.dispatchEvent(new CustomEvent('catalog:open-section', {
+      detail: { sectionId: collection.sectionId, preserveHistory: true },
+    }));
+    dispatchModalOpen(request.listKey, request.itemId);
+  };
+
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  history.replaceState({ ...history.state, catalogSection: null }, '', window.location.href);
+
+  window.addEventListener('scroll', () => {
+    if (isBackScrollAnimating) return;
+    window.clearTimeout(scrollCommitTimer);
+    const currentScrollY = window.scrollY;
+    scrollCommitTimer = window.setTimeout(() => {
+      lastStableScrollY = currentScrollY;
+    }, 80);
+  }, { passive: true });
+
+  const animateToSectionTop = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    const targetScrollY = Math.max(0, window.scrollY + section.getBoundingClientRect().top - 12);
+    const startScrollY = lastStableScrollY;
+    const distance = targetScrollY - startScrollY;
+    if (Math.abs(distance) < 1) return;
+
+    if (scrollAnimationFrame !== null) cancelAnimationFrame(scrollAnimationFrame);
+    isBackScrollAnimating = true;
+    window.scrollTo(0, startScrollY);
+    const animationStart = performance.now();
+    const duration = Math.min(900, Math.max(400, Math.abs(distance) * 0.35));
+    const animate = (now) => {
+      const progress = Math.min(1, (now - animationStart) / duration);
+      const easedProgress = 1 - ((1 - progress) ** 3);
+      window.scrollTo(0, startScrollY + distance * easedProgress);
+      if (progress < 1) {
+        scrollAnimationFrame = requestAnimationFrame(animate);
+      } else {
+        scrollAnimationFrame = null;
+        isBackScrollAnimating = false;
+        lastStableScrollY = targetScrollY;
+      }
+    };
+    scrollAnimationFrame = requestAnimationFrame(animate);
+  };
+
+  const closeSection = (section) => {
+    section.classList.remove('is-open');
+    const toggle = section.querySelector('.section-toggle');
+    toggle?.setAttribute('aria-expanded', 'false');
+    const icon = toggle?.querySelector('.section-toggle-icon');
+    if (icon) icon.textContent = '+';
+  };
+
+  document.addEventListener('catalog:open-section', (event) => {
+    const sectionId = event.detail?.sectionId;
+    if (!sectionId) return;
+    const hasActiveSectionHistory = Boolean(activeSectionId && history.state?.catalogSection === activeSectionId);
+    activeSectionId = sectionId;
+    if (event.detail?.preserveHistory) {
+      history.replaceState({ ...history.state, catalogSection: sectionId }, '', window.location.href);
+      return;
+    }
+    const updateHistory = hasActiveSectionHistory ? history.replaceState : history.pushState;
+    updateHistory.call(history, { ...history.state, catalogSection: sectionId }, '', `#${sectionId}`);
+  });
+
+  document.addEventListener('catalog:request-modal', (event) => {
+    const { listKey, itemId, modalId } = event.detail || {};
+    const collection = catalogSectionMap.find((entry) => entry.listKey === listKey);
+    if (!collection || itemId == null) return;
+    const nextUrl = sharePathFor(listKey, itemId);
+    history.pushState({ ...history.state, modalId, modalList: listKey, modalItem: String(itemId), catalogSection: collection.sectionId }, '', nextUrl);
+    document.dispatchEvent(new CustomEvent('catalog:open-section', {
+      detail: { sectionId: collection.sectionId, preserveHistory: true },
+    }));
+    dispatchModalOpen(listKey, String(itemId));
+  });
+
+  document.addEventListener('catalog:close-section', (event) => {
+    const sectionId = event.detail?.sectionId;
+    if (!sectionId) return;
+    activeSectionId = null;
+    if (history.state?.catalogSection !== sectionId) return;
+    const cleanUrl = `${window.location.pathname}${window.location.search}`;
+    history.replaceState({ ...history.state, catalogSection: null }, '', cleanUrl);
+  });
+
+  document.addEventListener('catalog:modal-closing', () => {
+    ignoreNextModalPopstate = true;
+  });
+
+  window.addEventListener('popstate', (event) => {
+    const openDialog = document.querySelector('dialog[open]');
+    if (openDialog && !event.state?.catalogSection) {
+      const section = openDialog.closest('.product-section');
+      if (section) {
+        const sectionUrl = new URL(window.location.href);
+        modalParamNames.forEach((name) => sectionUrl.searchParams.delete(name));
+        sectionUrl.hash = `#${section.id}`;
+        activeSectionId = section.id;
+        history.pushState({ ...event.state, catalogSection: section.id }, '', sectionUrl);
+      }
+    }
+    if (ignoreNextModalPopstate) {
+      ignoreNextModalPopstate = false;
+      return;
+    }
+    if (event.state?.modalId || openDialog) return;
+    const openSection = document.querySelector('.product-section.is-open');
+    if (!openSection) {
+      activeSectionId = null;
+      return;
+    }
+    const sectionId = event.state?.catalogSection || activeSectionId || openSection.id;
+    activeSectionId = sectionId;
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    const sectionTop = Math.max(0, window.scrollY + section.getBoundingClientRect().top - 12);
+    const isAtSectionTop = Math.abs(lastStableScrollY - sectionTop) <= 16 || Math.abs(window.scrollY - sectionTop) <= 16;
+    if (isAtSectionTop) {
+      closeSection(section);
+      activeSectionId = null;
+      return;
+    }
+    history.pushState({ ...history.state, catalogSection: sectionId }, '', `#${sectionId}`);
+    animateToSectionTop(sectionId);
+  });
+
+  const initialModalRequest = getModalRequestFromUrl();
+  if (initialModalRequest) {
+    window.setTimeout(() => openModalFromUrl(initialModalRequest, { replaceBase: true }), 0);
+  }
+</script>

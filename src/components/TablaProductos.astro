@@ -1,0 +1,630 @@
+---
+import GuiaVisual from './GuiaVisual.astro';
+
+export interface Producto {
+  id: number;
+  uid?: string;
+  nombre: string;
+  descripcion?: string;
+  largo?: number | string;
+  ancho?: number | string;
+  alto?: number | string;
+  peso?: string;
+  precio?: number | null;
+  panos?: number | string;
+  diametro?: number | string;
+  puerta?: string;
+  altura?: number | string;
+  capacidad?: number | string;
+  cuadricula?: string;
+  precioZincado?: number | null;
+  precioCrudo?: number | null;
+  media?: string | null;
+  galeria?: { tipo: 'imagen' | 'video'; src: string; alt?: string }[];
+}
+
+interface Props {
+  catalogKey?: string;
+  idSection: string;
+  titulo: string;
+  productos: Producto[];
+  downloadUrl?: string;
+  guiaVisual?: { tipo?: 'imagen' | 'video'; src: string; alt: string }[];
+  guiaVisualId?: string;
+  columnas?: { campo: keyof Producto; etiqueta: string; unidad?: string }[];
+}
+
+const { idSection, titulo, productos, downloadUrl, guiaVisual = [], guiaVisualId = idSection, columnas = [
+  { campo: 'largo', etiqueta: 'Largo', unidad: 'cm' },
+  { campo: 'ancho', etiqueta: 'Ancho', unidad: 'cm' },
+  { campo: 'alto', etiqueta: 'Alto', unidad: 'cm' },
+  { campo: 'peso', etiqueta: 'Peso' },
+  { campo: 'precio', etiqueta: 'Precio' },
+] } = Astro.props;
+const catalogKey = Astro.props.catalogKey ?? idSection;
+
+// Formatea los precios automáticamente a pesos argentinos ($ 157.860)
+const formatPrice = (price: number | string | null | undefined) =>
+  price == null || price === '' || !Number.isFinite(Number(price))
+    ? '---'
+    : new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(Number(price));
+
+const formatValue = (value: unknown, unidad?: string) => value == null || value === '' ? '---' : `${value}${unidad ? ` ${unidad}` : ''}`;
+const isPriceColumn = (campo: keyof Producto) => campo === 'precio' || campo === 'precioZincado' || campo === 'precioCrudo';
+const whatsappNumber = '541123419299';
+const modalId = `modal-${idSection}`;
+---
+
+<section id={idSection} class="product-section" data-catalog-section data-catalog-key={catalogKey}>
+  <h2>
+    <button class="section-toggle" type="button" aria-expanded="false" aria-controls={`content-${idSection}`}>
+      <span>{titulo}</span><span class="section-toggle-icon" aria-hidden="true">+</span>
+    </button>
+  </h2>
+  <div class="section-content" id={`content-${idSection}`}>
+  <GuiaVisual idBase={guiaVisualId} imagenes={guiaVisual} />
+  <p class="orientation-hint" role="status">Gira el celular para comparar la lista en filas y columnas.</p>
+  <p class="hint list-instruction">Toca cualquier producto para ver sus detalles, fotos y videos.</p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Producto</th>
+          {columnas.map((columna) => <th>{columna.etiqueta}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {productos.map((prod) => (
+          <tr class="product-row" data-product-id={prod.id} data-product-uid={prod.uid}>
+            <td>{prod.id}</td>
+            <td class="product-name">
+              <button class="btn-media" type="button">
+                {prod.nombre}
+              </button>
+            </td>
+            {columnas.map((columna) => (
+              <td class={columna.campo === 'precio' || columna.campo === 'precioZincado' || columna.campo === 'precioCrudo' ? 'price' : undefined}>
+                {columna.campo === 'precio' || columna.campo === 'precioZincado' || columna.campo === 'precioCrudo'
+                  ? formatPrice(prod[columna.campo] as number | null | undefined)
+                  : formatValue(prod[columna.campo], columna.unidad)}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mobile-products" aria-label={`Productos de ${titulo}`}>
+    {productos.map((prod) => (
+      <article class="mobile-product-card product-row" data-product-id={prod.id} data-product-uid={prod.uid}>
+        <div class="mobile-product-heading">
+          {(() => {
+            const primaryImage = prod.galeria?.find((media) => media.tipo === 'imagen');
+            const priceColumn = columnas.find((columna) => isPriceColumn(columna.campo));
+            return (
+              <>
+                <div class="mobile-product-image-frame">
+                  {primaryImage ? (
+                    <img
+                      class="mobile-product-image"
+                      src={primaryImage.src}
+                      alt={primaryImage.alt || `${prod.nombre} - imagen 1`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="mobile-product-image mobile-product-image-placeholder" aria-hidden="true">Sin imagen</div>
+                  )}
+                </div>
+                <div class="mobile-product-summary">
+                  <span class="mobile-product-id">Item {prod.id}</span>
+                  <button class="btn-media mobile-product-name" type="button">{prod.nombre}</button>
+                  {priceColumn && (
+                    <p class="mobile-product-price">
+                      {formatPrice(prod[priceColumn.campo] as number | null | undefined)}
+                    </p>
+                  )}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+        <dl class="mobile-product-details">
+          {columnas.filter((columna) => !isPriceColumn(columna.campo)).map((columna) => (
+            <div>
+              <dt>{columna.etiqueta}</dt>
+              <dd>
+                {formatValue(prod[columna.campo], columna.unidad)}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </article>
+    ))}
+  </div>
+
+  {downloadUrl && (
+    <div class="download-container">
+      <a href={downloadUrl} download class="btn-download">
+        Descargar lista
+      </a>
+    </div>
+  )}
+  </div>
+
+  <dialog class="product-modal" id={modalId} aria-labelledby={`modal-title-${idSection}`}>
+    <div class="product-modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar detalles">&times;</button>
+      <div>
+        <div class="modal-gallery" aria-live="polite">
+          <button class="gallery-zone gallery-zone-prev" type="button" aria-label="Contenido anterior"></button>
+          <button class="gallery-arrow gallery-prev" type="button" aria-label="Imagen anterior">&#8592;</button>
+          <div class="gallery-stage"></div>
+          <button class="gallery-arrow gallery-next" type="button" aria-label="Imagen siguiente">&#8594;</button>
+          <button class="gallery-zone gallery-zone-next" type="button" aria-label="Contenido siguiente"></button>
+        </div>
+        <div class="gallery-counter"></div>
+      </div>
+      <div class="product-details">
+        <p class="modal-eyebrow">Detalle del producto</p>
+        <h2 id={`modal-title-${idSection}`} class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <p class="modal-price"></p>
+        <p class="modal-empty">Próximamente habrá imágenes y videos disponibles para este producto.</p>
+        <a class="btn-whatsapp" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <div class="modal-share">
+          <button class="btn-share" type="button" aria-expanded="false" aria-controls={`share-menu-${idSection}`}>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4" />
+            </svg>
+            Compartir
+          </button>
+          <div class="share-menu" id={`share-menu-${idSection}`} aria-label="Opciones para compartir" hidden>
+            <a class="share-option share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="share-option share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <button class="share-option" type="button" data-share-instagram>Instagram</button>
+            <button class="share-option" type="button" data-share-copy>Copiar enlace</button>
+          </div>
+          <p class="share-notice" role="status" aria-live="polite" hidden></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script define:vars={{ idSection }}>
+  const section = document.getElementById(idSection);
+  const sectionToggle = section?.querySelector('.section-toggle');
+  const sectionContent = section?.querySelector('.section-content');
+  const setSectionState = (isOpen) => {
+    if (!section || !sectionToggle || !sectionContent) return;
+    section.classList.toggle('is-open', isOpen);
+    sectionToggle.setAttribute('aria-expanded', String(isOpen));
+    const icon = sectionToggle.querySelector('.section-toggle-icon');
+    if (icon) icon.textContent = isOpen ? '−' : '+';
+  };
+  sectionToggle?.addEventListener('click', () => {
+    if (section.classList.contains('is-open')) {
+      setSectionState(false);
+      document.dispatchEvent(new CustomEvent('catalog:close-section', { detail: { sectionId: idSection } }));
+    } else {
+      document.dispatchEvent(new CustomEvent('catalog:open-section', { detail: { sectionId: idSection } }));
+    }
+  });
+  document.addEventListener('catalog:open-section', (event) => {
+    const customEvent = event;
+    const sections = document.querySelectorAll('[data-catalog-section]');
+    sections.forEach((item) => {
+      const toggle = item.querySelector('.section-toggle');
+      const isTarget = item.id === customEvent.detail.sectionId;
+      item.classList.toggle('is-open', isTarget);
+      toggle?.setAttribute('aria-expanded', String(isTarget));
+      const icon = toggle?.querySelector('.section-toggle-icon');
+      if (icon) icon.textContent = isTarget ? '−' : '+';
+    });
+  });
+</script>
+
+<script define:vars={{ productos, whatsappNumber, modalId, listTitle: titulo, catalogKey }}>
+  const productData = productos;
+  const modal = document.querySelector(`#${modalId}`);
+  const formatPrice = (price) => price == null || price === '' || !Number.isFinite(Number(price))
+    ? '---'
+    : new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(Number(price));
+  const toYoutubeEmbed = (url) => {
+    try {
+      const parsedUrl = new URL(url);
+      const pathParts = parsedUrl.pathname.split('/').filter(Boolean);
+      const videoId = parsedUrl.hostname.includes('youtu.be')
+        ? pathParts[0]
+        : parsedUrl.searchParams.get('v') || pathParts[pathParts.findIndex((part) => ['shorts', 'embed', 'live'].includes(part)) + 1];
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    } catch {
+      return url;
+    }
+  };
+  let pageScrollY = 0;
+  let currentMedia = [];
+  let currentIndex = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let dragOffsetX = 0;
+  let activePointerId = null;
+  let dragStartTime = 0;
+  let isSwipeAnimating = false;
+  let hasStartedDrag = false;
+  let shareMenuOpen = false;
+  let shareNoticeTimer = null;
+
+  const getSwipeThreshold = () => Math.max(90, window.innerWidth * 0.3);
+  const shareButton = modal.querySelector('.btn-share');
+  const shareMenu = modal.querySelector('.share-menu');
+  const shareNotice = modal.querySelector('.share-notice');
+
+  const setShareMenuOpen = (isOpen, restoreHistory = true) => {
+    const wasOpen = shareMenuOpen;
+    shareMenuOpen = isOpen;
+    shareMenu.hidden = !isOpen;
+    shareButton.setAttribute('aria-expanded', String(isOpen));
+    if (!isOpen && wasOpen && modal.open) shareButton.focus();
+    if (!isOpen && restoreHistory && window.history.state?.shareMenu === modalId) {
+      window.history.back();
+    }
+  };
+
+  const getShareUrl = (itemId) => {
+    const isCustomList = catalogKey.startsWith('lista:');
+    const type = isCustomList ? 'lista' : 'original';
+    const collection = isCustomList ? catalogKey.slice('lista:'.length) : catalogKey;
+    return new URL(`/compartir/${type}/${encodeURIComponent(collection)}/${encodeURIComponent(String(itemId))}/`, window.location.origin).toString();
+  };
+
+  const showShareNotice = (message, isError = false) => {
+    window.clearTimeout(shareNoticeTimer);
+    shareNotice.textContent = message;
+    shareNotice.classList.toggle('is-error', isError);
+    shareNotice.hidden = false;
+    shareNoticeTimer = window.setTimeout(() => {
+      shareNotice.hidden = true;
+    }, 3500);
+  };
+
+  const copyShareUrl = async (message) => {
+    const shareUrl = modal.dataset.shareUrl;
+    try {
+      if (!shareUrl) throw new Error('No hay un enlace de producto para copiar.');
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        const temporaryInput = document.createElement('textarea');
+        temporaryInput.value = shareUrl;
+        temporaryInput.setAttribute('readonly', '');
+        temporaryInput.style.position = 'fixed';
+        temporaryInput.style.opacity = '0';
+        document.body.append(temporaryInput);
+        let copied = false;
+        try {
+          temporaryInput.select();
+          copied = document.execCommand('copy');
+        } finally {
+          temporaryInput.remove();
+        }
+        if (!copied) throw new Error('El navegador no pudo copiar el enlace.');
+      }
+      setShareMenuOpen(false);
+      showShareNotice(message);
+    } catch (error) {
+      console.error('No se pudo copiar el enlace compartible.', error);
+      setShareMenuOpen(false);
+      showShareNotice('No se pudo copiar. Puedes copiar el enlace desde la barra del navegador.', true);
+    }
+  };
+
+  shareButton.addEventListener('click', () => {
+    if (shareMenuOpen) {
+      setShareMenuOpen(false);
+      return;
+    }
+    window.history.pushState({ ...window.history.state, shareMenu: modalId }, '', window.location.href);
+    setShareMenuOpen(true, false);
+    shareMenu.querySelector('a, button')?.focus();
+  });
+
+  shareMenu.querySelector('.share-whatsapp').addEventListener('click', () => setShareMenuOpen(false));
+  shareMenu.querySelector('.share-facebook').addEventListener('click', () => setShareMenuOpen(false));
+  shareMenu.querySelector('[data-share-copy]').addEventListener('click', () => copyShareUrl('Enlace copiado.'));
+  shareMenu.querySelector('[data-share-instagram]').addEventListener('click', () => copyShareUrl('Enlace copiado. Pégalo en Instagram para compartirlo.'));
+
+  modal.addEventListener('cancel', (event) => {
+    if (shareMenuOpen) {
+      event.preventDefault();
+      setShareMenuOpen(false);
+      return;
+    }
+    event.preventDefault();
+    closeModalSafely();
+  });
+  modal.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && shareMenuOpen) {
+      event.preventDefault();
+      event.stopPropagation();
+      setShareMenuOpen(false);
+    }
+  });
+
+  const closeModalSafely = () => {
+    if (window.history.state && window.history.state.modalId === modalId) {
+      document.dispatchEvent(new CustomEvent('catalog:modal-closing'));
+      if (window.history.state.shareMenu === modalId) {
+        setShareMenuOpen(false, false);
+        window.history.go(-2);
+        modal.close();
+        return;
+      }
+      window.history.back();
+      return;
+    }
+    if (modal.open) modal.close();
+  };
+
+  const lockPageScroll = () => {
+    pageScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${pageScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const unlockPageScroll = () => {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, pageScrollY);
+  };
+
+  const createMediaElement = (item, autoplay = false) => {
+    if (item.tipo === 'video') {
+      const video = document.createElement('iframe');
+      const embedUrl = toYoutubeEmbed(item.src);
+      const embedParams = new URLSearchParams({
+        autoplay: autoplay ? '1' : '0',
+        enablejsapi: '1',
+        origin: window.location.origin,
+        playsinline: '1',
+        rel: '0',
+      });
+      video.src = `${embedUrl}?${embedParams}`;
+      video.title = item.alt || 'Video del producto';
+      video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      video.referrerPolicy = 'strict-origin-when-cross-origin';
+      video.allowFullscreen = true;
+      return video;
+    }
+    const image = document.createElement('img');
+    image.src = item.src;
+    image.alt = item.alt || 'Imagen del producto';
+    return image;
+  };
+
+  const renderMedia = () => {
+    const stage = modal.querySelector('.gallery-stage');
+    const counter = modal.querySelector('.gallery-counter');
+    const previous = modal.querySelector('.gallery-prev');
+    const next = modal.querySelector('.gallery-next');
+    stage.replaceChildren();
+    if (currentMedia.length === 0) {
+      stage.textContent = 'Sin contenido multimedia disponible';
+      counter.textContent = '';
+    } else {
+      const track = document.createElement('div');
+      track.className = 'gallery-track';
+      [-1, 0, 1].forEach((offset) => {
+        const slide = document.createElement('div');
+        slide.className = 'gallery-slide';
+        const index = currentIndex + offset;
+        if (index >= 0 && index < currentMedia.length) slide.append(createMediaElement(currentMedia[index], offset === 0));
+        track.append(slide);
+      });
+      track.style.transform = 'translate3d(-100%, 0, 0)';
+      stage.append(track);
+      counter.textContent = `${currentIndex + 1} / ${currentMedia.length}`;
+    }
+    previous.hidden = currentMedia.length < 2 || currentIndex === 0;
+    next.hidden = currentMedia.length < 2 || currentIndex === currentMedia.length - 1;
+    dragOffsetX = 0;
+  };
+
+  const stopMediaPlayback = () => {
+    modal.querySelector('.gallery-stage')?.replaceChildren();
+    currentMedia = [];
+    currentIndex = 0;
+  };
+
+  const moveTo = (direction) => {
+    const nextIndex = currentIndex + direction;
+    if (nextIndex < 0 || nextIndex >= currentMedia.length) return;
+    currentIndex = nextIndex;
+    renderMedia();
+  };
+
+  const openProduct = (product) => {
+    const media = product.galeria || (product.media ? [{ tipo: 'video', src: product.media }] : []);
+    currentMedia = media;
+    currentIndex = 0;
+    const shareUrl = getShareUrl(product.uid || product.id);
+    const shareText = [product.nombre, product.descripcion, shareUrl].filter(Boolean).join('\n');
+    modal.dataset.shareUrl = shareUrl;
+    modal.querySelector('.share-whatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+    modal.querySelector('.share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    shareNotice.hidden = true;
+    setShareMenuOpen(false, false);
+    modal.querySelector('.modal-title').textContent = product.nombre;
+    modal.querySelector('.modal-description').textContent = product.descripcion || 'Consultá disponibilidad, medidas y terminaciones con nuestro equipo.';
+    modal.querySelector('.modal-price').textContent = formatPrice(product.precio ?? product.precioZincado ?? product.precioCrudo);
+    modal.querySelector('.modal-empty').hidden = media.length > 0;
+    const productPrice = product.precio ?? product.precioZincado ?? product.precioCrudo;
+    const formattedProductPrice = productPrice == null || productPrice === '' || !Number.isFinite(Number(productPrice))
+      ? '---'
+      : new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(Number(productPrice));
+    const whatsappMessage = [
+      'Hola, quiero consultar por:',
+      '',
+      `Lista: ${listTitle}`,
+      `Ítem: ${product.id}`,
+      `Producto: ${product.nombre}`,
+      `Precio: ${formattedProductPrice}`,
+    ].join('\n');
+    modal.querySelector('.btn-whatsapp').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    renderMedia();
+    lockPageScroll();
+    modal.showModal();
+  };
+
+  modal.closest('section').querySelectorAll('.product-row').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const product = productData.find((item) => String(item.id) === trigger.dataset.productId);
+      if (product) {
+        document.dispatchEvent(new CustomEvent('catalog:request-modal', {
+          detail: { listKey: catalogKey, itemId: product.uid || product.id, usesUid: Boolean(product.uid), modalId },
+        }));
+      }
+    });
+  });
+  document.addEventListener('catalog:open-modal', (event) => {
+    const { listKey, itemId } = event.detail || {};
+    if (listKey !== catalogKey) return;
+    const product = productData.find((item) => String(item.uid || item.id) === String(itemId))
+      || productData.find((item) => String(item.id) === String(itemId));
+    if (product) openProduct(product);
+  });
+  modal.querySelector('.gallery-prev').addEventListener('click', () => moveTo(-1));
+  modal.querySelector('.gallery-next').addEventListener('click', () => moveTo(1));
+  modal.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') moveTo(-1);
+    if (event.key === 'ArrowRight') moveTo(1);
+  });
+  const galleryStage = modal.querySelector('.gallery-stage');
+  const gallerySurface = modal.querySelector('.modal-gallery');
+
+  const resetSwipeState = () => {
+    dragOffsetX = 0;
+    activePointerId = null;
+    dragStartTime = 0;
+    isSwipeAnimating = false;
+    hasStartedDrag = false;
+    galleryStage.classList.remove('is-dragging');
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transform = 'translate3d(-100%, 0, 0)';
+  };
+
+  const handleDragEnd = () => {
+    if (isSwipeAnimating) return;
+
+    const threshold = getSwipeThreshold();
+    const elapsedMs = Math.max(16, Date.now() - dragStartTime);
+    const velocity = Math.abs(dragOffsetX) / elapsedMs;
+    const shouldAdvance = Math.abs(dragOffsetX) > threshold || velocity > 0.9;
+
+    if (shouldAdvance) {
+      isSwipeAnimating = true;
+      activePointerId = null;
+      dragStartTime = 0;
+      const direction = dragOffsetX < 0 ? 1 : -1;
+      const track = galleryStage.querySelector('.gallery-track');
+      if (!track) return;
+      track.style.transition = 'transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)';
+      track.style.transform = `translate3d(${direction > 0 ? '-200%' : '0%'}, 0, 0)`;
+      setTimeout(() => {
+        moveTo(direction);
+        resetSwipeState();
+      }, 180);
+      return;
+    }
+
+    resetSwipeState();
+  };
+
+  gallerySurface.addEventListener('pointerdown', (event) => {
+    if (event.target.closest('.gallery-arrow')) return;
+    if (isSwipeAnimating || currentMedia.length < 2 || event.pointerType === 'mouse' && event.button !== 0) return;
+    activePointerId = event.pointerId;
+    touchStartX = event.clientX;
+    touchStartY = event.clientY;
+    dragStartTime = Date.now();
+    dragOffsetX = 0;
+    hasStartedDrag = false;
+    galleryStage.classList.remove('is-dragging');
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transition = 'none';
+  });
+
+  gallerySurface.addEventListener('pointermove', (event) => {
+    if (isSwipeAnimating || activePointerId !== event.pointerId || currentMedia.length < 2) return;
+    const deltaX = event.clientX - touchStartX;
+    const deltaY = Math.abs(event.clientY - touchStartY);
+
+    if (!hasStartedDrag && Math.abs(deltaX) < 8 && deltaY < 8) {
+      return;
+    }
+
+    if (!hasStartedDrag) {
+      hasStartedDrag = true;
+      galleryStage.classList.add('is-dragging');
+      gallerySurface.setPointerCapture?.(event.pointerId);
+    }
+
+    if (deltaY > 18 && Math.abs(deltaX) < 12) {
+      return;
+    }
+
+    if (Math.abs(deltaX) > 4) {
+      event.preventDefault();
+    }
+
+    dragOffsetX = deltaX;
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transform = `translate3d(calc(-100% + ${deltaX}px), 0, 0)`;
+  });
+
+  gallerySurface.addEventListener('pointerup', handleDragEnd);
+  gallerySurface.addEventListener('pointercancel', resetSwipeState);
+  gallerySurface.addEventListener('pointerleave', () => {
+    if (!isSwipeAnimating && activePointerId !== null) {
+      handleDragEnd();
+    }
+  });
+  modal.querySelector('.modal-close').addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeModalSafely();
+  });
+  modal.addEventListener('close', () => {
+    stopMediaPlayback();
+    unlockPageScroll();
+    setShareMenuOpen(false, false);
+  });
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      event.stopPropagation();
+      closeModalSafely();
+      return;
+    }
+    if (shareMenuOpen && !event.target.closest('.modal-share')) setShareMenuOpen(false);
+  });
+  window.addEventListener('popstate', (event) => {
+    if (!modal.open) return;
+    if (shareMenuOpen) {
+      setShareMenuOpen(false, false);
+      return;
+    }
+    if (event.state?.modalId === modalId) return;
+    modal.close();
+  });
+</script>

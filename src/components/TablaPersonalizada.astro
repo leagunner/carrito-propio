@@ -1,0 +1,647 @@
+---
+import GuiaVisual from './GuiaVisual.astro';
+
+interface MediaItem {
+  tipo?: 'imagen' | 'video';
+  src: string;
+  alt?: string;
+}
+
+interface CustomColumn {
+  clave: string;
+  nombre: string;
+}
+
+interface CustomRow {
+  id: number;
+  uid?: string;
+  celdas: Record<string, string>;
+  galeria?: MediaItem[];
+}
+
+interface CustomList {
+  clave: string;
+  titulo: string;
+  columnas: CustomColumn[];
+  filas: CustomRow[];
+}
+
+interface Props {
+  lista: CustomList;
+  guiaVisual?: { tipo?: 'imagen' | 'video'; src: string; alt: string }[];
+}
+
+const { lista, guiaVisual = [] } = Astro.props;
+const modalId = `modal-lista-${lista.clave}`;
+const rows = lista.filas ?? [];
+const normalizeLabel = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+const columnRole = (column: CustomColumn) => {
+  const label = normalizeLabel(column.nombre);
+  if (['producto', 'productos', 'nombre', 'articulo', 'item'].includes(label)) return 'product';
+  if (['precio', 'precios', 'precio zincado', 'precio crudo', 'valor', 'importe'].includes(label)) return 'price';
+  if (['descripcion', 'detalle'].includes(label)) return 'description';
+  return 'text';
+};
+const formatPrice = (value: string | undefined) => {
+  if (!value?.trim()) return '---';
+  const numericText = value.replace(/[^0-9,.-]/g, '');
+  const normalizedText = numericText.includes(',')
+    ? numericText.replace(/\./g, '').replace(',', '.')
+    : /^\d{1,3}(\.\d{3})+$/.test(numericText) ? numericText.replace(/\./g, '') : numericText;
+  if (!normalizedText || normalizedText === '-' || normalizedText === ',' || normalizedText === '.') return '---';
+  const numericValue = Number(normalizedText);
+  return Number.isFinite(numericValue)
+    ? new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(numericValue)
+    : value;
+};
+const displayValue = (column: CustomColumn, value: string | undefined) => columnRole(column) === 'price' ? formatPrice(value) : value || '---';
+  const whatsappNumber = '541123419299';
+---
+
+<section id={lista.clave} class="product-section custom-list-section" data-catalog-section data-catalog-key={`lista:${lista.clave}`}>
+  <h2>
+    <button class="section-toggle" type="button" aria-expanded="false" aria-controls={`content-${lista.clave}`}>
+      <span>{lista.titulo}</span><span class="section-toggle-icon" aria-hidden="true">+</span>
+    </button>
+  </h2>
+  <div class="section-content" id={`content-${lista.clave}`}>
+  <GuiaVisual idBase={`lista-${lista.clave}`} imagenes={guiaVisual} />
+  <p class="orientation-hint" role="status">Gira el celular para comparar la lista en filas y columnas.</p>
+  <p class="hint list-instruction">Toca cualquier fila para ver sus detalles, fotos y videos.</p>
+  {rows.length > 0 ? (
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            {lista.columnas.map((columna) => <th>{columna.nombre}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((fila, index) => (
+            <tr class="custom-row" data-row-id={fila.id} data-row-uid={fila.uid}>
+              <td>{index + 1}</td>
+              {lista.columnas.map((columna) => (
+                columnRole(columna) === 'product'
+                  ? <td class="product-name"><button class="btn-media" type="button">{displayValue(columna, fila.celdas?.[columna.clave])}</button></td>
+                  : <td class:list={{ price: columnRole(columna) === 'price' }}>{displayValue(columna, fila.celdas?.[columna.clave])}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="mobile-products custom-mobile-products" aria-label={`Productos de ${lista.titulo}`}>
+      {rows.map((fila, index) => (
+        <article class="mobile-product-card custom-row" data-row-id={fila.id} data-row-uid={fila.uid}>
+          <div class="mobile-product-heading">
+            {(() => {
+              const primaryImage = fila.galeria?.find((media) => !media.tipo || media.tipo === 'imagen');
+              return (
+                <>
+                  <div class="mobile-product-image-frame">
+                    {primaryImage ? (
+                      <img
+                        class="mobile-product-image"
+                        src={primaryImage.src}
+                        alt={primaryImage.alt || `Item ${index + 1} - imagen 1`}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <div class="mobile-product-image mobile-product-image-placeholder" aria-hidden="true">Sin imagen</div>
+                    )}
+                  </div>
+                  <div class="mobile-product-summary">
+                    <span class="mobile-product-id">Item {index + 1}</span>
+                    {lista.columnas.map((columna) => columnRole(columna) === 'product' ? (
+                      <button class="btn-media mobile-product-name" type="button">
+                        {displayValue(columna, fila.celdas?.[columna.clave])}
+                      </button>
+                    ) : null)}
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+          <dl class="mobile-product-details">
+            {lista.columnas.map((columna) => columnRole(columna) !== 'product' ? (
+              <div class:list={{ 'mobile-product-price': columnRole(columna) === 'price' }}>
+                <dt>{columna.nombre}</dt>
+                <dd>{displayValue(columna, fila.celdas?.[columna.clave])}</dd>
+              </div>
+            ) : null)}
+          </dl>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <p class="hint">Esta lista todavía no tiene filas.</p>
+  )}
+  </div>
+
+  <dialog class="product-modal" id={modalId} aria-labelledby={`modal-title-${lista.clave}`}>
+    <div class="product-modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar detalles">&times;</button>
+      <div>
+        <div class="modal-gallery" aria-live="polite">
+          <button class="gallery-zone gallery-zone-prev" type="button" aria-label="Contenido anterior"></button>
+          <button class="gallery-arrow gallery-prev" type="button" aria-label="Imagen anterior">&#8592;</button>
+          <div class="gallery-stage"></div>
+          <button class="gallery-arrow gallery-next" type="button" aria-label="Imagen siguiente">&#8594;</button>
+          <button class="gallery-zone gallery-zone-next" type="button" aria-label="Contenido siguiente"></button>
+        </div>
+        <div class="gallery-counter"></div>
+      </div>
+      <div class="product-details">
+        <p class="modal-eyebrow">Detalle</p>
+        <h2 id={`modal-title-${lista.clave}`} class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <p class="modal-price"></p>
+        <a class="btn-whatsapp" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <div class="modal-share">
+          <button class="btn-share" type="button" aria-expanded="false" aria-controls={`share-menu-${lista.clave}`}>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4" />
+            </svg>
+            Compartir
+          </button>
+          <div class="share-menu" id={`share-menu-${lista.clave}`} aria-label="Opciones para compartir" hidden>
+            <a class="share-option share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="share-option share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <button class="share-option" type="button" data-share-instagram>Instagram</button>
+            <button class="share-option" type="button" data-share-copy>Copiar enlace</button>
+          </div>
+          <p class="share-notice" role="status" aria-live="polite" hidden></p>
+        </div>
+        <div class="custom-row-values"></div>
+        <p class="modal-empty">Próximamente habrá imágenes y videos disponibles para esta fila.</p>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script define:vars={{ sectionId: lista.clave }}>
+  const section = document.getElementById(sectionId);
+  const sectionToggle = section?.querySelector('.section-toggle');
+  const setSectionState = (isOpen) => {
+    if (!section || !sectionToggle) return;
+    section.classList.toggle('is-open', isOpen);
+    sectionToggle.setAttribute('aria-expanded', String(isOpen));
+    const icon = sectionToggle.querySelector('.section-toggle-icon');
+    if (icon) icon.textContent = isOpen ? '−' : '+';
+  };
+  sectionToggle?.addEventListener('click', () => {
+    if (section.classList.contains('is-open')) {
+      setSectionState(false);
+      document.dispatchEvent(new CustomEvent('catalog:close-section', { detail: { sectionId: sectionId } }));
+    } else {
+      document.dispatchEvent(new CustomEvent('catalog:open-section', { detail: { sectionId: sectionId } }));
+    }
+  });
+  document.addEventListener('catalog:open-section', (event) => {
+    const customEvent = event;
+    document.querySelectorAll('[data-catalog-section]').forEach((item) => {
+      const toggle = item.querySelector('.section-toggle');
+      const isTarget = item.id === customEvent.detail.sectionId;
+      item.classList.toggle('is-open', isTarget);
+      toggle?.setAttribute('aria-expanded', String(isTarget));
+      const icon = toggle?.querySelector('.section-toggle-icon');
+      if (icon) icon.textContent = isTarget ? '−' : '+';
+    });
+  });
+</script>
+
+<script define:vars={{ rows, columnData: lista.columnas, modalId, listTitle: lista.titulo, whatsappNumber, catalogKey: `lista:${lista.clave}` }}>
+  const modal = document.querySelector(`#${modalId}`);
+  const rowData = rows;
+  const columns = columnData;
+  const normalizedLabel = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  const getColumnRole = (column) => {
+    const label = normalizedLabel(column.nombre);
+    if (['producto', 'productos', 'nombre', 'articulo', 'item'].includes(label)) return 'product';
+    if (['precio', 'precios', 'precio zincado', 'precio crudo', 'valor', 'importe'].includes(label)) return 'price';
+    if (['descripcion', 'detalle'].includes(label)) return 'description';
+    return 'text';
+  };
+  const formatPrice = (value) => {
+    if (!value?.trim()) return '---';
+    const numericText = value.replace(/[^0-9,.-]/g, '');
+    const normalizedText = numericText.includes(',')
+      ? numericText.replace(/\./g, '').replace(',', '.')
+      : /^\d{1,3}(\.\d{3})+$/.test(numericText) ? numericText.replace(/\./g, '') : numericText;
+    if (!normalizedText || normalizedText === '-' || normalizedText === ',' || normalizedText === '.') return '---';
+    const numericValue = Number(normalizedText);
+    return Number.isFinite(numericValue)
+      ? new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(numericValue)
+      : value;
+  };
+  let currentMedia = [];
+  let currentIndex = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let dragOffsetX = 0;
+  let activePointerId = null;
+  let dragStartTime = 0;
+  let isSwipeAnimating = false;
+  let hasStartedDrag = false;
+  let pageScrollY = 0;
+  let shareMenuOpen = false;
+  let shareNoticeTimer = null;
+
+  const getSwipeThreshold = () => Math.max(90, window.innerWidth * 0.3);
+  const shareButton = modal.querySelector('.btn-share');
+  const shareMenu = modal.querySelector('.share-menu');
+  const shareNotice = modal.querySelector('.share-notice');
+
+  const setShareMenuOpen = (isOpen, restoreHistory = true) => {
+    const wasOpen = shareMenuOpen;
+    shareMenuOpen = isOpen;
+    shareMenu.hidden = !isOpen;
+    shareButton.setAttribute('aria-expanded', String(isOpen));
+    if (!isOpen && wasOpen && modal.open) shareButton.focus();
+    if (!isOpen && restoreHistory && window.history.state?.shareMenu === modalId) {
+      window.history.back();
+    }
+  };
+
+  const getShareUrl = (itemId) => {
+    const collection = catalogKey.slice('lista:'.length);
+    return new URL(`/compartir/lista/${encodeURIComponent(collection)}/${encodeURIComponent(String(itemId))}/`, window.location.origin).toString();
+  };
+
+  const showShareNotice = (message, isError = false) => {
+    window.clearTimeout(shareNoticeTimer);
+    shareNotice.textContent = message;
+    shareNotice.classList.toggle('is-error', isError);
+    shareNotice.hidden = false;
+    shareNoticeTimer = window.setTimeout(() => {
+      shareNotice.hidden = true;
+    }, 3500);
+  };
+
+  const copyShareUrl = async (message) => {
+    const shareUrl = modal.dataset.shareUrl;
+    try {
+      if (!shareUrl) throw new Error('No hay un enlace de producto para copiar.');
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        const temporaryInput = document.createElement('textarea');
+        temporaryInput.value = shareUrl;
+        temporaryInput.setAttribute('readonly', '');
+        temporaryInput.style.position = 'fixed';
+        temporaryInput.style.opacity = '0';
+        document.body.append(temporaryInput);
+        let copied = false;
+        try {
+          temporaryInput.select();
+          copied = document.execCommand('copy');
+        } finally {
+          temporaryInput.remove();
+        }
+        if (!copied) throw new Error('El navegador no pudo copiar el enlace.');
+      }
+      setShareMenuOpen(false);
+      showShareNotice(message);
+    } catch (error) {
+      console.error('No se pudo copiar el enlace compartible.', error);
+      setShareMenuOpen(false);
+      showShareNotice('No se pudo copiar. Puedes copiar el enlace desde la barra del navegador.', true);
+    }
+  };
+
+  shareButton.addEventListener('click', () => {
+    if (shareMenuOpen) {
+      setShareMenuOpen(false);
+      return;
+    }
+    window.history.pushState({ ...window.history.state, shareMenu: modalId }, '', window.location.href);
+    setShareMenuOpen(true, false);
+    shareMenu.querySelector('a, button')?.focus();
+  });
+
+  shareMenu.querySelector('.share-whatsapp').addEventListener('click', () => setShareMenuOpen(false));
+  shareMenu.querySelector('.share-facebook').addEventListener('click', () => setShareMenuOpen(false));
+  shareMenu.querySelector('[data-share-copy]').addEventListener('click', () => copyShareUrl('Enlace copiado.'));
+  shareMenu.querySelector('[data-share-instagram]').addEventListener('click', () => copyShareUrl('Enlace copiado. Pégalo en Instagram para compartirlo.'));
+
+  modal.addEventListener('cancel', (event) => {
+    if (shareMenuOpen) {
+      event.preventDefault();
+      setShareMenuOpen(false);
+      return;
+    }
+    event.preventDefault();
+    closeModalSafely();
+  });
+  modal.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && shareMenuOpen) {
+      event.preventDefault();
+      event.stopPropagation();
+      setShareMenuOpen(false);
+    }
+  });
+
+  const lockPageScroll = () => {
+    pageScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${pageScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const unlockPageScroll = () => {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, pageScrollY);
+  };
+
+  const closeModalSafely = () => {
+    if (window.history.state && window.history.state.modalId === modalId) {
+      document.dispatchEvent(new CustomEvent('catalog:modal-closing'));
+      if (window.history.state.shareMenu === modalId) {
+        setShareMenuOpen(false, false);
+        window.history.go(-2);
+        modal.close();
+        return;
+      }
+      window.history.back();
+      return;
+    }
+    if (modal.open) modal.close();
+  };
+
+  if (!modal) {
+    throw new Error(`No se encontró el modal de la lista ${modalId}`);
+  }
+
+  const toYoutubeEmbed = (url) => {
+    try {
+      const parsedUrl = new URL(url);
+      const pathParts = parsedUrl.pathname.split('/').filter(Boolean);
+      const videoId = parsedUrl.hostname.includes('youtu.be')
+        ? pathParts[0]
+        : parsedUrl.searchParams.get('v') || pathParts[pathParts.findIndex((part) => ['shorts', 'embed', 'live'].includes(part)) + 1];
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    } catch {
+      return url;
+    }
+  };
+
+  const createMediaElement = (item, autoplay = false) => {
+    if (item.tipo === 'video') {
+      const video = document.createElement('iframe');
+      const embedUrl = toYoutubeEmbed(item.src);
+      const embedParams = new URLSearchParams({
+        autoplay: autoplay ? '1' : '0',
+        enablejsapi: '1',
+        origin: window.location.origin,
+        playsinline: '1',
+        rel: '0',
+      });
+      video.src = `${embedUrl}?${embedParams}`;
+      video.title = item.alt || 'Video de la fila';
+      video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      video.referrerPolicy = 'strict-origin-when-cross-origin';
+      video.allowFullscreen = true;
+      return video;
+    }
+    const image = document.createElement('img');
+    image.src = item.src;
+    image.alt = item.alt || 'Imagen de la fila';
+    return image;
+  };
+
+  const renderMedia = () => {
+    const stage = modal.querySelector('.gallery-stage');
+    const counter = modal.querySelector('.gallery-counter');
+    const previous = modal.querySelector('.gallery-prev');
+    const next = modal.querySelector('.gallery-next');
+    stage.replaceChildren();
+    if (currentMedia.length === 0) {
+      stage.textContent = 'Sin contenido multimedia disponible';
+      counter.textContent = '';
+    } else {
+      const track = document.createElement('div');
+      track.className = 'gallery-track';
+      [-1, 0, 1].forEach((offset) => {
+        const slide = document.createElement('div');
+        slide.className = 'gallery-slide';
+        const index = currentIndex + offset;
+        if (index >= 0 && index < currentMedia.length) slide.append(createMediaElement(currentMedia[index], offset === 0));
+        track.append(slide);
+      });
+      track.style.transform = 'translate3d(-100%, 0, 0)';
+      stage.append(track);
+      counter.textContent = `${currentIndex + 1} / ${currentMedia.length}`;
+    }
+    previous.hidden = currentMedia.length < 2 || currentIndex === 0;
+    next.hidden = currentMedia.length < 2 || currentIndex === currentMedia.length - 1;
+    dragOffsetX = 0;
+  };
+
+  const stopMediaPlayback = () => {
+    modal.querySelector('.gallery-stage')?.replaceChildren();
+    currentMedia = [];
+    currentIndex = 0;
+  };
+
+  const moveTo = (direction) => {
+    const nextIndex = currentIndex + direction;
+    if (nextIndex < 0 || nextIndex >= currentMedia.length) return;
+    currentIndex = nextIndex;
+    renderMedia();
+  };
+
+  const openRow = (row) => {
+    currentMedia = row.galeria || [];
+    currentIndex = 0;
+    const rowNumber = rowData.indexOf(row) + 1;
+    const productColumn = columns.find((column) => getColumnRole(column) === 'product');
+    const descriptionColumn = columns.find((column) => getColumnRole(column) === 'description');
+    const priceColumns = columns.filter((column) => getColumnRole(column) === 'price');
+    const title = productColumn ? row.celdas?.[productColumn.clave] || `Fila ${rowNumber}` : `Fila ${rowNumber}`;
+    const description = row.descripcion || (descriptionColumn ? row.celdas?.[descriptionColumn.clave] : '') || 'Consultá disponibilidad, medidas y terminaciones con nuestro equipo.';
+    const shareUrl = getShareUrl(row.uid || row.id);
+    const shareText = [title, description, shareUrl].filter(Boolean).join('\n');
+    modal.dataset.shareUrl = shareUrl;
+    modal.querySelector('.share-whatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+    modal.querySelector('.share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    shareNotice.hidden = true;
+    setShareMenuOpen(false, false);
+    modal.querySelector('.modal-title').textContent = title;
+    modal.querySelector('.modal-description').textContent = description;
+    modal.querySelector('.modal-price').textContent = priceColumns.length > 0 ? formatPrice(row.celdas?.[priceColumns[0].clave]) : '';
+    const values = modal.querySelector('.custom-row-values');
+    values.replaceChildren();
+    columns.forEach((column) => {
+      const role = getColumnRole(column);
+      if (role === 'product' || role === 'description' || (role === 'price' && column === priceColumns[0])) return;
+      const value = document.createElement('p');
+      value.textContent = `${column.nombre}: ${role === 'price' ? formatPrice(row.celdas?.[column.clave]) : row.celdas?.[column.clave] || '---'}`;
+      values.append(value);
+    });
+    modal.querySelector('.modal-empty').hidden = currentMedia.length > 0;
+    const price = priceColumns.length > 0 ? formatPrice(row.celdas?.[priceColumns[0].clave]) : 'Consultar precio';
+    const whatsappMessage = [
+      'Hola, quiero consultar por:',
+      '',
+      `Lista: ${listTitle}`,
+      `Ítem: ${rowNumber}`,
+      `Producto: ${title}`,
+      `Precio: ${price}`,
+    ].join('\n');
+    modal.querySelector('.btn-whatsapp').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    renderMedia();
+    lockPageScroll();
+    modal.showModal();
+  };
+
+  modal.closest('section').querySelectorAll('.custom-row').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const row = rowData.find((item) => String(item.id) === trigger.dataset.rowId);
+      if (row) {
+        document.dispatchEvent(new CustomEvent('catalog:request-modal', {
+          detail: { listKey: catalogKey, itemId: row.uid || row.id, usesUid: Boolean(row.uid), modalId },
+        }));
+      }
+    });
+  });
+  document.addEventListener('catalog:open-modal', (event) => {
+    const { listKey, itemId } = event.detail || {};
+    if (listKey !== catalogKey) return;
+    const row = rowData.find((item) => String(item.uid || item.id) === String(itemId))
+      || rowData.find((item) => String(item.id) === String(itemId));
+    if (row) openRow(row);
+  });
+  modal.querySelector('.gallery-prev').addEventListener('click', () => moveTo(-1));
+  modal.querySelector('.gallery-next').addEventListener('click', () => moveTo(1));
+  modal.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') moveTo(-1);
+    if (event.key === 'ArrowRight') moveTo(1);
+  });
+  const galleryStage = modal.querySelector('.gallery-stage');
+  const gallerySurface = modal.querySelector('.modal-gallery');
+
+  const resetSwipeState = () => {
+    dragOffsetX = 0;
+    activePointerId = null;
+    dragStartTime = 0;
+    isSwipeAnimating = false;
+    hasStartedDrag = false;
+    galleryStage.classList.remove('is-dragging');
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transform = 'translate3d(-100%, 0, 0)';
+  };
+
+  const handleDragEnd = () => {
+    if (isSwipeAnimating) return;
+
+    const threshold = getSwipeThreshold();
+    const elapsedMs = Math.max(16, Date.now() - dragStartTime);
+    const velocity = Math.abs(dragOffsetX) / elapsedMs;
+    const shouldAdvance = Math.abs(dragOffsetX) > threshold || velocity > 0.9;
+
+    if (shouldAdvance) {
+      isSwipeAnimating = true;
+      activePointerId = null;
+      dragStartTime = 0;
+      const direction = dragOffsetX < 0 ? 1 : -1;
+      const track = galleryStage.querySelector('.gallery-track');
+      if (!track) return;
+      track.style.transition = 'transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)';
+      track.style.transform = `translate3d(${direction > 0 ? '-200%' : '0%'}, 0, 0)`;
+      setTimeout(() => {
+        moveTo(direction);
+        resetSwipeState();
+      }, 180);
+      return;
+    }
+
+    resetSwipeState();
+  };
+
+  gallerySurface.addEventListener('pointerdown', (event) => {
+    if (event.target.closest('.gallery-arrow')) return;
+    if (isSwipeAnimating || currentMedia.length < 2 || event.pointerType === 'mouse' && event.button !== 0) return;
+    activePointerId = event.pointerId;
+    touchStartX = event.clientX;
+    touchStartY = event.clientY;
+    dragStartTime = Date.now();
+    dragOffsetX = 0;
+    hasStartedDrag = false;
+    galleryStage.classList.remove('is-dragging');
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transition = 'none';
+  });
+
+  gallerySurface.addEventListener('pointermove', (event) => {
+    if (isSwipeAnimating || activePointerId !== event.pointerId || currentMedia.length < 2) return;
+    const deltaX = event.clientX - touchStartX;
+    const deltaY = Math.abs(event.clientY - touchStartY);
+
+    if (!hasStartedDrag && Math.abs(deltaX) < 8 && deltaY < 8) {
+      return;
+    }
+
+    if (!hasStartedDrag) {
+      hasStartedDrag = true;
+      galleryStage.classList.add('is-dragging');
+      gallerySurface.setPointerCapture?.(event.pointerId);
+    }
+
+    if (deltaY > 18 && Math.abs(deltaX) < 12) {
+      return;
+    }
+
+    if (Math.abs(deltaX) > 4) {
+      event.preventDefault();
+    }
+
+    dragOffsetX = deltaX;
+    const track = galleryStage.querySelector('.gallery-track');
+    if (track) track.style.transform = `translate3d(calc(-100% + ${deltaX}px), 0, 0)`;
+  });
+
+  gallerySurface.addEventListener('pointerup', handleDragEnd);
+  gallerySurface.addEventListener('pointercancel', resetSwipeState);
+  gallerySurface.addEventListener('pointerleave', () => {
+    if (!isSwipeAnimating && activePointerId !== null) {
+      handleDragEnd();
+    }
+  });
+  modal.querySelector('.modal-close').addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeModalSafely();
+  });
+  modal.addEventListener('close', () => {
+    stopMediaPlayback();
+    unlockPageScroll();
+    setShareMenuOpen(false, false);
+  });
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      event.stopPropagation();
+      closeModalSafely();
+      return;
+    }
+    if (shareMenuOpen && !event.target.closest('.modal-share')) setShareMenuOpen(false);
+  });
+  window.addEventListener('popstate', (event) => {
+    if (!modal.open) return;
+    if (shareMenuOpen) {
+      setShareMenuOpen(false, false);
+      return;
+    }
+    if (event.state?.modalId === modalId) return;
+    modal.close();
+  });
+</script>

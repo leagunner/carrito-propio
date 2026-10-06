@@ -1,0 +1,162 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import catalog from '../../../../data/productos.json';
+
+interface MediaItem {
+  tipo?: 'imagen' | 'video';
+  src: string;
+  alt?: string;
+}
+
+interface Product {
+  id: number;
+  uid?: string;
+  nombre: string;
+  descripcion?: string;
+  galeria?: MediaItem[];
+}
+
+interface CustomColumn {
+  clave: string;
+  nombre: string;
+}
+
+interface CustomRow {
+  id: number;
+  uid?: string;
+  descripcion?: string;
+  celdas: Record<string, string>;
+  galeria?: MediaItem[];
+}
+
+interface CustomList {
+  clave: string;
+  titulo: string;
+  columnas: CustomColumn[];
+  filas: CustomRow[];
+}
+
+interface SharePageProps {
+  listKey: string;
+  itemId: string;
+  usesUid: boolean;
+  sectionId: string;
+  title: string;
+  description?: string;
+  image: string;
+  imageAlt: string;
+  canonical: string;
+  modalHref: string;
+}
+
+export function getStaticPaths() {
+  const catalogData = catalog as unknown as Record<string, unknown>;
+  const siteUrl = new URL(import.meta.env.SITE ?? 'https://catalogo-metalurgica-exhibe.web.app/');
+  const sharePages: { params: { tipo: string; coleccion: string; uid: string }; props: SharePageProps }[] = [];
+  const normalizeLabel = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  const collectionSectionId = (key: string) => key === 'cajasTransporte'
+    ? 'cajas'
+    : key === 'cajasPeluqueria' ? 'cajas-peluqueria' : key;
+  const toAbsoluteUrl = (path: string) => new URL(path, siteUrl).toString();
+  const addSharePage = (entry: {
+    tipo: 'original' | 'lista';
+    collectionKey: string;
+    itemId: string;
+    usesUid: boolean;
+    listKey: string;
+    sectionId: string;
+    title: string;
+    description?: string;
+    media?: MediaItem[];
+  }) => {
+    const sharePath = `/compartir/${entry.tipo}/${encodeURIComponent(entry.collectionKey)}/${encodeURIComponent(entry.itemId)}/`;
+    const canonical = new URL(sharePath, siteUrl).toString();
+    const image = entry.media?.find((item) => item.tipo === 'imagen' || !item.tipo);
+    const modalUrl = new URL('/', siteUrl);
+    modalUrl.searchParams.set('lista', entry.listKey);
+    modalUrl.searchParams.set(entry.usesUid ? 'uid' : 'item', entry.itemId);
+    modalUrl.searchParams.set('share', sharePath);
+    modalUrl.hash = entry.sectionId;
+
+    sharePages.push({
+      params: { tipo: entry.tipo, coleccion: entry.collectionKey, uid: entry.itemId },
+      props: {
+        listKey: entry.listKey,
+        itemId: entry.itemId,
+        usesUid: entry.usesUid,
+        sectionId: entry.sectionId,
+        title: entry.title,
+        description: entry.description?.trim() || undefined,
+        image: toAbsoluteUrl(image?.src ?? '/images/portada1.jpg'),
+        imageAlt: image?.alt?.trim() || entry.title,
+        canonical,
+        modalHref: `${modalUrl.pathname}${modalUrl.search}${modalUrl.hash}`,
+      },
+    });
+  };
+  const isProduct = (value: unknown): value is Product => (
+    typeof value === 'object'
+    && value !== null
+    && 'id' in value
+    && typeof value.id === 'number'
+    && 'nombre' in value
+    && typeof value.nombre === 'string'
+  );
+
+  for (const [collectionKey, value] of Object.entries(catalogData)) {
+    if (['listasPersonalizadas', 'ordenColecciones', 'guiasVisuales'].includes(collectionKey) || !Array.isArray(value)) continue;
+    for (const candidate of value) {
+      if (!isProduct(candidate)) continue;
+      const itemId = candidate.uid || String(candidate.id);
+      addSharePage({
+        tipo: 'original',
+        collectionKey,
+        itemId,
+        usesUid: Boolean(candidate.uid),
+        listKey: collectionKey,
+        sectionId: collectionSectionId(collectionKey),
+        title: candidate.nombre,
+        description: candidate.descripcion,
+        media: candidate.galeria,
+      });
+    }
+  }
+
+  const customLists = (catalogData.listasPersonalizadas as CustomList[] | undefined) ?? [];
+  for (const list of customLists) {
+    const productColumn = list.columnas.find((column) => ['producto', 'productos', 'nombre', 'articulo', 'item'].includes(normalizeLabel(column.nombre)));
+    const descriptionColumn = list.columnas.find((column) => ['descripcion', 'detalle'].includes(normalizeLabel(column.nombre)));
+    for (const row of list.filas) {
+      const itemId = row.uid || String(row.id);
+      addSharePage({
+        tipo: 'lista',
+        collectionKey: list.clave,
+        itemId,
+        usesUid: Boolean(row.uid),
+        listKey: `lista:${list.clave}`,
+        sectionId: list.clave,
+        title: row.celdas?.[productColumn?.clave ?? '']?.trim() || `${list.titulo} - Ítem ${row.id}`,
+        description: row.descripcion || row.celdas?.[descriptionColumn?.clave ?? ''],
+        media: row.galeria,
+      });
+    }
+  }
+
+  return sharePages;
+}
+
+const { title, description, image, imageAlt, canonical, modalHref } = Astro.props;
+---
+
+<Layout title={`${title} | Metalúrgica Exhibe`} description={description} canonical={canonical} socialImage={image} socialImageAlt={imageAlt}>
+  <main class="container" style="max-width: 48rem; margin: 4rem auto; padding: 1rem;">
+    <h1>{title}</h1>
+    {description && <p>{description}</p>}
+    <img src={image} alt={imageAlt} style="display: block; max-width: 100%; height: auto;" />
+    <p><a href={modalHref}>Ver este producto en el catálogo</a></p>
+  </main>
+</Layout>
+
+<script define:vars={{ modalHref }}>
+  window.location.replace(modalHref);
+</script>

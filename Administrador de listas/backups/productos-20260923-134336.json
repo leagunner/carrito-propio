@@ -1,0 +1,3686 @@
+{
+  "ordenColecciones": [
+    "jaulas",
+    "cajasTransporte",
+    "cajasPeluqueria",
+    "corrales",
+    "cercos",
+    "aves",
+    "racks",
+    "parideras",
+    "varios1",
+    "varios2",
+    "canastos"
+  ],
+  "guiasVisuales": {
+    "jaulas": [
+      {
+        "tipo": "video",
+        "src": "https://youtu.be/wHorheTT95I?si=Ov7W4M0HOH9XIt4F",
+        "alt": "Video explicativo"
+      },
+      {
+        "src": "/images/explicaciones/caniles/00.png",
+        "alt": "Guía visual de la línea de caniles: modelos y características"
+      },
+      {
+        "src": "/images/explicaciones/caniles/01.png",
+        "alt": "Canil reforzado: características y prestaciones"
+      },
+      {
+        "src": "/images/explicaciones/caniles/02.png",
+        "alt": "Canil común: características y prestaciones"
+      },
+      {
+        "src": "/images/explicaciones/caniles/03.png",
+        "alt": "Caniles dobles y triples: modelos y capacidades"
+      },
+      {
+        "src": "/images/explicaciones/caniles/04.png",
+        "alt": "Fabricación de caniles a medida y servicio de zincado"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/jaulas/file_000000007ea871f5abb773420d2a1176~2.webp",
+        "alt": "file_000000007ea871f5abb773420d2a1176~2"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/jaulas/file_00000000f8a8720e92fa612d1cb24798~2.webp",
+        "alt": "file_00000000f8a8720e92fa612d1cb24798~2"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/jaulas/file_000000007194720ebd108752bffd650d~2.webp",
+        "alt": "file_000000007194720ebd108752bffd650d~2"
+      }
+    ],
+    "cajasTransporte": [
+      {
+        "src": "/images/explicaciones/cajastransporte/001.webp",
+        "alt": "001"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/cajastransporte/IMG-20251124-WA0004.webp",
+        "alt": "IMG-20251124-WA0004"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/cajastransporte/IMG-20251124-WA0001.webp",
+        "alt": "IMG-20251124-WA0001"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/cajastransporte/IMG-20251124-WA0002.webp",
+        "alt": "IMG-20251124-WA0002"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/cajastransporte/IMG-20251124-WA0003.webp",
+        "alt": "IMG-20251124-WA0003"
+      }
+    ],
+    "corrales": [
+      {
+        "tipo": "video",
+        "src": "https://youtube.com/shorts/r5D6WDCb7SE?si=JmW3faS_glAqXoTg",
+        "alt": "Video explicativo"
+      },
+      {
+        "src": "/images/explicaciones/corrales/01.webp",
+        "alt": "01"
+      },
+      {
+        "src": "/images/explicaciones/corrales/03.webp",
+        "alt": "03"
+      },
+      {
+        "src": "/images/explicaciones/corrales/02.webp",
+        "alt": "02"
+      },
+      {
+        "src": "/images/explicaciones/corrales/04.webp",
+        "alt": "04"
+      }
+    ],
+    "cajasPeluqueria": [
+      {
+        "src": "/images/explicaciones/cajaspeluqueria/01.webp",
+        "alt": "01"
+      },
+      {
+        "src": "/images/explicaciones/cajaspeluqueria/caja2Producto5.webp",
+        "alt": "caja2Producto5"
+      },
+      {
+        "src": "/images/explicaciones/cajaspeluqueria/03.webp",
+        "alt": "03"
+      },
+      {
+        "src": "/images/explicaciones/cajaspeluqueria/04.webp",
+        "alt": "04"
+      }
+    ],
+    "racks": [
+      {
+        "tipo": "video",
+        "src": "https://youtu.be/S1W-w5XlOMw?si=gAXXDAbmwusacDLK",
+        "alt": "Video explicativo"
+      },
+      {
+        "src": "/images/explicaciones/racks/file_00000000e724720e8440f49451604ca6~2.webp",
+        "alt": "file_00000000e724720e8440f49451604ca6~2"
+      },
+      {
+        "src": "/images/explicaciones/racks/file_000000003680720ea792398c839baf61.webp",
+        "alt": "file_000000003680720ea792398c839baf61"
+      },
+      {
+        "src": "/images/explicaciones/racks/1001998570.webp",
+        "alt": "1001998570"
+      },
+      {
+        "src": "/images/explicaciones/racks/file_00000000d1f4720e8f2edd9f8ec92f02.webp",
+        "alt": "file_00000000d1f4720e8f2edd9f8ec92f02"
+      },
+      {
+        "src": "/images/explicaciones/racks/IMG-20260916-WA0004.webp",
+        "alt": "IMG-20260916-WA0004"
+      },
+      {
+        "src": "/images/explicaciones/racks/file_00000000fa30720e8562a96f0c9d4537~2.webp",
+        "alt": "file_00000000fa30720e8562a96f0c9d4537~2"
+      }
+    ],
+    "parideras": [
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/parideras/file_000000007dec71f5979946d850216bb1.webp",
+        "alt": "file_000000007dec71f5979946d850216bb1"
+      }
+    ],
+    "aves": [
+      {
+        "tipo": "video",
+        "src": "https://youtu.be/mSqH-lw1KEU?si=lrvwtzGoL2X70zgg",
+        "alt": "Video explicativo"
+      }
+    ],
+    "cercos": [
+      {
+        "tipo": "video",
+        "src": "https://youtu.be/mJNgN9NgvOU?si=p6aSvdD2uyPDaOtR",
+        "alt": "Video explicativo"
+      },
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/cercos/cercos.webp",
+        "alt": "cercos"
+      }
+    ],
+    "varios2": [
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/varios2/IMG-20260911-WA0039.webp",
+        "alt": "IMG-20260911-WA0039"
+      }
+    ]
+  },
+  "jaulas": [
+    {
+      "id": 1,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "10 Kg",
+      "precio": 157870,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 60x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20260529_112025-2.webp",
+          "alt": "IMG_20260529_112025"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/YvhW-0mcJZY?si=gndaEtg4zNuFCCZc",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/Sin título-1.webp",
+          "alt": "Sin título-1"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula reforzada cerrada.webp",
+          "alt": "jaula reforzada cerrada"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20260529_111840-2.webp",
+          "alt": "IMG_20260529_111840"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20260529_111846-2.webp",
+          "alt": "IMG_20260529_111846"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20260529_111943-2.webp",
+          "alt": "IMG_20260529_111943"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 80,
+      "ancho": 60,
+      "alto": 70,
+      "peso": "14 Kg",
+      "precio": 204200,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 80x60x70 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/80x60x70.webp",
+          "alt": "80x60x70"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/TgZM8FBzjsM?si=LuANEGfmPKbXeorx",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/80x60x70 2.webp",
+          "alt": "80x60x70 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/ccc.webp",
+          "alt": "ccc"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/WhatsApp Image 2021-12-15 at 8.38.10 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.38.10 AM"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/WhatsApp Image 2021-12-15 at 8.38.10c AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.38.10c AM"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "15 Kg",
+      "precio": 221930,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 80x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20231221_112634.webp",
+          "alt": "IMG_20231221_112634"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/Pr5W7tX9J7s?si=noxSQigvEf_oVAsC",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20231221_112719.webp",
+          "alt": "IMG_20231221_112719"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20231221_112723.webp",
+          "alt": "IMG_20231221_112723"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20231221_112748.webp",
+          "alt": "IMG_20231221_112748"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20231221_112753.webp",
+          "alt": "IMG_20231221_112753"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/WhatsApp Image 2021-12-15 at 8.38.45 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.38.45 AM"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "16 Kg",
+      "precio": 233920,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 80x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/reforzada 80x80x80.webp",
+          "alt": "reforzada 80x80x80"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/7ib6nwanF_0?si=ffoLdxisvmCykogF",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/80x80x80.webp",
+          "alt": "80x80x80"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/reforzada abierta.webp",
+          "alt": "reforzada abierta"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/reforzada cerrada.webp",
+          "alt": "reforzada cerrada"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 120,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "20 Kg",
+      "precio": 283790,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 120x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula reforzada 120 x 60 x 60.webp",
+          "alt": "jaula reforzada 120 x 60 x 60"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/hyVibqmuoFs?si=w6qeQbMh-SezAf01",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/120x60x60.webp",
+          "alt": "120x60x60"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 130,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "23 Kg",
+      "precio": 315210,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 130x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x60 (2).webp",
+          "alt": "130x80x60 (2)"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/bXNktcLSw8g?si=Tjc7Ace33BGfYGUD",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x60 (1).webp",
+          "alt": "130x80x60 (1)"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 130,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "26 Kg",
+      "precio": 345290,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 130x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x80.webp",
+          "alt": "130x80x80"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/nnMAG-WV5ls?si=eJFwIRELEHusz3j_",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x80 (2).webp",
+          "alt": "130x80x80 (2)"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x80 (3).webp",
+          "alt": "130x80x80 (3)"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/130x80x80 (4).webp",
+          "alt": "130x80x80 (4)"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 160,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "29 Kg",
+      "precio": 388760,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 160x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160x80x60 (1).webp",
+          "alt": "160x80x60 (1)"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/QeN9M9AD5bc?si=ey1bG9fparE8qVFE",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160x80x60 (2).webp",
+          "alt": "160x80x60 (2)"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160x80x60 (3).webp",
+          "alt": "160x80x60 (3)"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 160,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "32 Kg",
+      "precio": 419360,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 160x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20241119_143248.webp",
+          "alt": "IMG_20241119_143248"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/A_NJs7oT7ao?si=JhjieTfncUlGJwJb",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20241119_142751.webp",
+          "alt": "IMG_20241119_142751"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160 80 80 2.webp",
+          "alt": "160 80 80 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160x80x80 2.webp",
+          "alt": "160x80x80 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160 80 80-2.webp",
+          "alt": "160 80 80"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/160x80x80.webp",
+          "alt": "160x80x80"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 180,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "35 Kg",
+      "precio": 465490,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 180x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula11.webp",
+          "alt": "jaula11"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Jaula (Reforzada)",
+      "largo": 180,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "39 Kg",
+      "precio": 506860,
+      "media": null,
+      "descripcion": "Jaula (Reforzada) de 180x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20220418_094929.webp",
+          "alt": "IMG_20220418_094929"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/eDdNUXRMMdI?si=oO97Yd_i9-G5MQQS",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20220418_094937.webp",
+          "alt": "IMG_20220418_094937"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/IMG_20220418_095314.webp",
+          "alt": "IMG_20220418_095314"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Jaula (Común)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "8 Kg",
+      "precio": 126570,
+      "media": null,
+      "descripcion": "Jaula (Común) de 60x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/60x60x60 comun 2.webp",
+          "alt": "60x60x60 comun 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/60x60x60 comun 3.webp",
+          "alt": "60x60x60 comun 3"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Jaula (Común)",
+      "largo": 80,
+      "ancho": 60,
+      "alto": 70,
+      "peso": "12 Kg",
+      "precio": 171610,
+      "media": null,
+      "descripcion": "Jaula (Común) de 80x60x70 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 14,
+      "nombre": "Jaula (Común)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "13 Kg",
+      "precio": 194530,
+      "media": null,
+      "descripcion": "Jaula (Común) de 80x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 15,
+      "nombre": "Jaula (Común)",
+      "largo": 120,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "17 Kg",
+      "precio": 249190,
+      "media": null,
+      "descripcion": "Jaula (Común) de 120x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula comun 120x60x60 cerrada.webp",
+          "alt": "jaula comun 120x60x60 cerrada"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/YtY9XuuBJqY?si=dXWkOmI6FEjFft0o",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula comun 120x60x60.webp",
+          "alt": "jaula comun 120x60x60"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/jaula comun puerta abierta 120x60x60.webp",
+          "alt": "jaula comun puerta abierta 120x60x60"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Jaula (Común)",
+      "largo": 130,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "21 Kg",
+      "precio": 291490,
+      "media": null,
+      "descripcion": "Jaula (Común) de 130x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 17,
+      "nombre": "Jaula (Común)",
+      "largo": 160,
+      "ancho": 80,
+      "alto": 60,
+      "peso": "26 Kg",
+      "precio": 362820,
+      "media": null,
+      "descripcion": "Jaula (Común) de 160x80x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 18,
+      "nombre": "Jaula Trampa",
+      "largo": 62,
+      "ancho": 30,
+      "alto": 30,
+      "peso": "4,5 Kg",
+      "precio": 71550,
+      "media": null,
+      "descripcion": "Jaula Trampa de 62x30x30 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/20220105_100836.webp",
+          "alt": "20220105_100836"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/tUHcIQfAmuc?si=jkkbHbK-wW8OsEXx",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/20220105_100850.webp",
+          "alt": "20220105_100850"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/jaulas/20220105_100939.webp",
+          "alt": "20220105_100939"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "Jaula Trampa",
+      "largo": 100,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "10 Kg",
+      "precio": 165000,
+      "media": null,
+      "descripcion": "Jaula Trampa de 100x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/_Mw-KMhKzf0?si=u_7I-_YZse5-KfKH",
+          "alt": "Video del producto"
+        }
+      ]
+    }
+  ],
+  "cajasTransporte": [
+    {
+      "id": 1,
+      "nombre": "Caja Estándar Nº 50",
+      "largo": 52,
+      "ancho": 40,
+      "alto": 35,
+      "peso": "3,5 Kg",
+      "precio": 96720,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 50 de 52x40x35 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 2,
+      "nombre": "Caja Estándar Nº 100",
+      "largo": 56,
+      "ancho": 44,
+      "alto": 39,
+      "peso": "3,9 Kg",
+      "precio": 113950,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 100 de 56x44x39 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 3,
+      "nombre": "Caja Estándar Nº 150",
+      "largo": 63,
+      "ancho": 44,
+      "alto": 39,
+      "peso": "5 Kg",
+      "precio": 144420,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 150 de 63x44x39 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 4,
+      "nombre": "Caja Estándar Nº 200",
+      "largo": 70,
+      "ancho": 51,
+      "alto": 49,
+      "peso": "6 Kg",
+      "precio": 193450,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 200 de 70x51x49 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 5,
+      "nombre": "Caja Estándar Nº 250",
+      "largo": 70,
+      "ancho": 51,
+      "alto": 55,
+      "peso": "7 Kg",
+      "precio": 201400,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 250 de 70x51x55 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 6,
+      "nombre": "Caja Estándar Nº 300",
+      "largo": 81,
+      "ancho": 58,
+      "alto": 60,
+      "peso": "8 Kg",
+      "precio": 225250,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 300 de 81x58x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 7,
+      "nombre": "Caja Estándar Nº 350",
+      "largo": 80,
+      "ancho": 58,
+      "alto": 72,
+      "peso": "9 Kg",
+      "precio": 231870,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 350 de 80x58x72 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 8,
+      "nombre": "Caja Estándar Nº 400",
+      "largo": 92,
+      "ancho": 62,
+      "alto": 68,
+      "peso": "10 Kg",
+      "precio": 249100,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 400 de 92x62x68 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 9,
+      "nombre": "Caja Estándar Nº 450",
+      "largo": 92,
+      "ancho": 62,
+      "alto": 78,
+      "peso": "11 Kg",
+      "precio": 275600,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 450 de 92x62x78 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 10,
+      "nombre": "Caja Estándar Nº 500",
+      "largo": 105,
+      "ancho": 71,
+      "alto": 74,
+      "peso": "13 Kg",
+      "precio": 294150,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 500 de 105x71x74 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 11,
+      "nombre": "Caja Estándar Nº 550",
+      "largo": 105,
+      "ancho": 71,
+      "alto": 90,
+      "peso": "14 Kg",
+      "precio": 312700,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 550 de 105x71x90 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 12,
+      "nombre": "Caja Estándar Nº 580",
+      "largo": 120,
+      "ancho": 72,
+      "alto": 80,
+      "peso": "15 Kg",
+      "precio": 353770,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 580 de 120x72x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 13,
+      "nombre": "Caja Estándar Nº 600",
+      "largo": 120,
+      "ancho": 72,
+      "alto": 90,
+      "peso": "17 Kg",
+      "precio": 353770,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 600 de 120x72x90 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 14,
+      "nombre": "Caja Estándar Nº 700",
+      "largo": 135,
+      "ancho": 85,
+      "alto": 95,
+      "peso": "20,5 Kg",
+      "precio": 434600,
+      "media": null,
+      "descripcion": "Caja Estándar Nº 700 de 135x85x95 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 15,
+      "nombre": "Caja Común Nº 400",
+      "largo": 92,
+      "ancho": 62,
+      "alto": 68,
+      "peso": "7 Kg",
+      "precio": 225250,
+      "media": null,
+      "descripcion": "Caja Común Nº 400 de 92x62x68 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 16,
+      "nombre": "Caja Común Nº 500",
+      "largo": 105,
+      "ancho": 71,
+      "alto": 74,
+      "peso": "10 Kg",
+      "precio": 267650,
+      "media": null,
+      "descripcion": "Caja Común Nº 500 de 105x71x74 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 17,
+      "nombre": "Caja Común Nº 580",
+      "largo": 120,
+      "ancho": 72,
+      "alto": 80,
+      "peso": "12 Kg",
+      "precio": 323300,
+      "media": null,
+      "descripcion": "Caja Común Nº 580 de 120x72x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    }
+  ],
+  "cajasPeluqueria": [
+    {
+      "id": 1,
+      "nombre": "Caja Nº 200",
+      "largo": 65,
+      "ancho": 42,
+      "alto": 50,
+      "peso": "6 Kg",
+      "precio": 179100,
+      "media": null,
+      "descripcion": "Caja Nº 200 de 65x42x50 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cajaspeluqueria/02.webp",
+          "alt": "02"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Caja Nº 300",
+      "largo": 78,
+      "ancho": 45,
+      "alto": 60,
+      "peso": "8 Kg",
+      "precio": 206700,
+      "media": null,
+      "descripcion": "Caja Nº 300 de 78x45x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cajaspeluqueria/02-2.webp",
+          "alt": "02"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Caja Nº 400",
+      "largo": 86,
+      "ancho": 50,
+      "alto": 67,
+      "peso": "10 Kg",
+      "precio": 234260,
+      "media": null,
+      "descripcion": "Caja Nº 400 de 86x50x67 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cajaspeluqueria/02-3.webp",
+          "alt": "02"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Caja Nº 500",
+      "largo": 110,
+      "ancho": 58,
+      "alto": 80,
+      "peso": "13 Kg",
+      "precio": 261800,
+      "media": null,
+      "descripcion": "Caja Nº 500 de 110x58x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cajaspeluqueria/02-4.webp",
+          "alt": "02"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Mesa Peluqueria Canina",
+      "largo": 90,
+      "ancho": 60,
+      "alto": 90,
+      "peso": "13 Kg",
+      "precio": 307400,
+      "media": null,
+      "descripcion": "Mesa Peluqueria Canina de 90x60x90 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cajaspeluqueria/caja2Producto5.webp",
+          "alt": "caja2Producto5"
+        }
+      ]
+    }
+  ],
+  "corrales": [
+    {
+      "id": 1,
+      "nombre": "Corral",
+      "alto": 110,
+      "ancho": 70,
+      "panos": 8,
+      "diametro": 180,
+      "puerta": "Si",
+      "peso": "18 Kg",
+      "precio": 229340,
+      "media": null,
+      "descripcion": "Corral de 70x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 8pañpñ.webp",
+          "alt": "corral 8pañpñ"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/MUBAPu7psUc?si=hJtSRmstMGAKTfkT",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 110.webp",
+          "alt": "corral 110"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 8 paños.webp",
+          "alt": "corral 8 paños"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_102731_HDR.webp",
+          "alt": "IMG_20220311_102731_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/semi abierto.webp",
+          "alt": "semi abierto"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Corral",
+      "alto": 110,
+      "ancho": 70,
+      "panos": 10,
+      "diametro": 200,
+      "puerta": "Si",
+      "peso": "23 Kg",
+      "precio": 294140,
+      "media": null,
+      "descripcion": "Corral de 70x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_105227_HDR.webp",
+          "alt": "IMG_20220311_105227_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/bEVzdmetPe8?si=M4S_62hKxGSIRi5G",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 8 paños-2.webp",
+          "alt": "corral 8 paños"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 8pañpñ-2.webp",
+          "alt": "corral 8pañpñ"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 110-2.webp",
+          "alt": "corral 110"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_105040_HDR.webp",
+          "alt": "IMG_20220311_105040_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_105231_HDR.webp",
+          "alt": "IMG_20220311_105231_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/semi abierto-2.webp",
+          "alt": "semi abierto"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Corral",
+      "alto": 110,
+      "ancho": 70,
+      "panos": 12,
+      "diametro": 240,
+      "puerta": "Si",
+      "peso": "27 Kg",
+      "precio": 344800,
+      "media": null,
+      "descripcion": "Corral de 70x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_105939_HDR.webp",
+          "alt": "IMG_20220311_105939_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/QgCA1wkq__s?si=EMejunzjK96jXSmw",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 110-3.webp",
+          "alt": "corral 110"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_105945_HDR.webp",
+          "alt": "IMG_20220311_105945_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_110120_HDR.webp",
+          "alt": "IMG_20220311_110120_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/semi abierto-3.webp",
+          "alt": "semi abierto"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 4,
+      "diametro": "----",
+      "puerta": "No",
+      "peso": "7 Kg",
+      "precio": 98020,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_103406_HDR.webp",
+          "alt": "IMG_20220311_103406_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/Ci-DUOSxjRQ?si=foB8a7ub_bwok9yp",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_103428_HDR.webp",
+          "alt": "IMG_20220311_103428_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141012.webp",
+          "alt": "Photoroom-20240503_141012"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 6,
+      "diametro": 160,
+      "puerta": "No",
+      "peso": "11 Kg",
+      "precio": 148360,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_111906_HDR.webp",
+          "alt": "IMG_20220311_111906_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/2zUSniuoo9c?si=bU_sEMoPURae-TqN",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_111829_HDR.webp",
+          "alt": "IMG_20220311_111829_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_111900_HDR.webp",
+          "alt": "IMG_20220311_111900_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141200.webp",
+          "alt": "Photoroom-20240503_141200"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 8,
+      "diametro": 180,
+      "puerta": "No",
+      "peso": "14 Kg",
+      "precio": 186390,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/WhatsApp Image 2021-12-15 at 8.39.18 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.39.18 AM"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/l77U7Dtv-L0?si=Iyfcx9Uh--tzXlOE",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 80 sin puerta.webp",
+          "alt": "corral 80 sin puerta"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_112459_HDR.webp",
+          "alt": "IMG_20220311_112459_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_112608_HDR.webp",
+          "alt": "IMG_20220311_112608_HDR"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 10,
+      "diametro": 200,
+      "puerta": "No",
+      "peso": "18 Kg",
+      "precio": 236400,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_113405_HDR.webp",
+          "alt": "IMG_20220311_113405_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/SoJlVI2HpHs?si=_uRIbu38cs_N1Wxo",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_113357_HDR.webp",
+          "alt": "IMG_20220311_113357_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_113545_HDR.webp",
+          "alt": "IMG_20220311_113545_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141030.webp",
+          "alt": "Photoroom-20240503_141030"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 8,
+      "diametro": 180,
+      "puerta": "Si",
+      "peso": "15 Kg",
+      "precio": 199480,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_114231_HDR.webp",
+          "alt": "IMG_20220311_114231_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/11m7xxIhStU?si=9yOJv_N48PyHPnlK",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_114237_HDR.webp",
+          "alt": "IMG_20220311_114237_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_114353_HDR.webp",
+          "alt": "IMG_20220311_114353_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141141.webp",
+          "alt": "Photoroom-20240503_141141"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 10,
+      "diametro": 200,
+      "puerta": "Si",
+      "peso": "19 Kg",
+      "precio": 250220,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_115507_HDR.webp",
+          "alt": "IMG_20220311_115507_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/JGmdq4XOM50?si=S6SguKnTigzl5o3p",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_115340_HDR.webp",
+          "alt": "IMG_20220311_115340_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_115503_HDR.webp",
+          "alt": "IMG_20220311_115503_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141238.webp",
+          "alt": "Photoroom-20240503_141238"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Corral",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 12,
+      "diametro": 240,
+      "puerta": "Si",
+      "peso": "21 Kg",
+      "precio": 283350,
+      "media": null,
+      "descripcion": "Corral de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120444_HDR.webp",
+          "alt": "IMG_20220311_120444_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/H7UwpLt-sLI?si=05wfNURYL5-Cz7LR",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120223_HDR.webp",
+          "alt": "IMG_20220311_120223_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120450_HDR.webp",
+          "alt": "IMG_20220311_120450_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141221.webp",
+          "alt": "Photoroom-20240503_141221"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Corral",
+      "alto": 60,
+      "ancho": 50,
+      "panos": 8,
+      "diametro": 130,
+      "puerta": "No",
+      "peso": "8 Kg",
+      "precio": 113000,
+      "media": null,
+      "descripcion": "Corral de 50x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120945_HDR.webp",
+          "alt": "IMG_20220311_120945_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/iCyo5p2dgh8?si=6qiejuABQBiSLV5F",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 60.webp",
+          "alt": "corral 60"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120850_HDR.webp",
+          "alt": "IMG_20220311_120850_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_120939_HDR.webp",
+          "alt": "IMG_20220311_120939_HDR"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Corral",
+      "alto": 60,
+      "ancho": 50,
+      "panos": 10,
+      "diametro": 150,
+      "puerta": "No",
+      "peso": "10 Kg",
+      "precio": 135760,
+      "media": null,
+      "descripcion": "Corral de 50x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_121620_HDR.webp",
+          "alt": "IMG_20220311_121620_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/B5oSO0wEdIM?si=1-UAaj9VWmhb_7Nh",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral 60-2.webp",
+          "alt": "corral 60"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_121623_HDR.webp",
+          "alt": "IMG_20220311_121623_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_121737_HDR.webp",
+          "alt": "IMG_20220311_121737_HDR"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Corral",
+      "alto": 60,
+      "ancho": 50,
+      "panos": 12,
+      "diametro": 180,
+      "puerta": "No",
+      "peso": "12 Kg",
+      "precio": 163570,
+      "media": null,
+      "descripcion": "Corral de 50x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_122145_HDR.webp",
+          "alt": "IMG_20220311_122145_HDR"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/SBa65OQhrjc?si=qavZpcOv_AGLcBbR",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_122150_HDR.webp",
+          "alt": "IMG_20220311_122150_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/IMG_20220311_122313_HDR.webp",
+          "alt": "IMG_20220311_122313_HDR"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/Photoroom-20240503_141256.webp",
+          "alt": "Photoroom-20240503_141256"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Corral Modular",
+      "alto": 38,
+      "ancho": 45,
+      "panos": 6,
+      "diametro": 90,
+      "puerta": "No",
+      "peso": "2,4 Kg",
+      "precio": 54170,
+      "media": null,
+      "descripcion": "Corral Modular de 45x38 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral14.webp",
+          "alt": "corral14"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/pBfQrvHTV4w?si=zEi8AtTYprTsPmrS",
+          "alt": "Video del producto"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Corral Modular",
+      "alto": 38,
+      "ancho": 45,
+      "panos": 8,
+      "diametro": 118,
+      "puerta": "No",
+      "peso": "3,2 Kg",
+      "precio": 72690,
+      "media": null,
+      "descripcion": "Corral Modular de 45x38 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral15.webp",
+          "alt": "corral15"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/pBfQrvHTV4w?si=zEi8AtTYprTsPmrS",
+          "alt": "Video del producto"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Corral Modular",
+      "alto": 38,
+      "ancho": 45,
+      "panos": 10,
+      "diametro": 146,
+      "puerta": "No",
+      "peso": "4 Kg",
+      "precio": 90880,
+      "media": null,
+      "descripcion": "Corral Modular de 45x38 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/corrales/corral16.webp",
+          "alt": "corral16"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/pBfQrvHTV4w?si=zEi8AtTYprTsPmrS",
+          "alt": "Video del producto"
+        }
+      ]
+    }
+  ],
+  "cercos": [
+    {
+      "id": 1,
+      "nombre": "Estaca Cerco Lineal",
+      "alto": 125,
+      "ancho": 18,
+      "panos": "----",
+      "puerta": "----",
+      "peso": "0,6 Kg",
+      "precio": 7560,
+      "media": null,
+      "descripcion": "Estaca Cerco Lineal de 18x125 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114147001.webp",
+          "alt": "1643114147001"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Estaca Cerco Lineal",
+      "alto": 95,
+      "ancho": 18,
+      "panos": "----",
+      "puerta": "----",
+      "peso": "0,4 Kg",
+      "precio": 5390,
+      "media": null,
+      "descripcion": "Estaca Cerco Lineal de 18x95 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114147001-2.webp",
+          "alt": "1643114147001"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Estaca Cerco Lineal",
+      "alto": 75,
+      "ancho": 18,
+      "panos": "----",
+      "puerta": "----",
+      "peso": "0,3 Kg",
+      "precio": 4180,
+      "media": null,
+      "descripcion": "Estaca Cerco Lineal de 18x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114147001-3.webp",
+          "alt": "1643114147001"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Cerco Lineal",
+      "alto": 110,
+      "ancho": 70,
+      "panos": 1,
+      "puerta": "----",
+      "peso": "2,5 Kg",
+      "precio": 32610,
+      "media": null,
+      "descripcion": "Cerco Lineal de 70x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 5,
+      "nombre": "Cerco Lineal",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 1,
+      "puerta": "----",
+      "peso": "2 Kg",
+      "precio": 26560,
+      "media": null,
+      "descripcion": "Cerco Lineal de 70x80 cm. El precio es por UN SOLO PANEL INDIVIDUAL.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114329912.webp",
+          "alt": "1643114329912"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114223233.webp",
+          "alt": "1643114223233"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114163482.webp",
+          "alt": "1643114163482"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114208643.webp",
+          "alt": "1643114208643"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114178777.webp",
+          "alt": "1643114178777"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114238066.webp",
+          "alt": "1643114238066"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114253297.webp",
+          "alt": "1643114253297"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114267221.webp",
+          "alt": "1643114267221"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114314291.webp",
+          "alt": "1643114314291"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114343970.webp",
+          "alt": "1643114343970"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114374123.webp",
+          "alt": "1643114374123"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114401943.webp",
+          "alt": "1643114401943"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Cerco Lineal",
+      "alto": 60,
+      "ancho": 50,
+      "panos": 1,
+      "puerta": "----",
+      "peso": "1,3 Kg",
+      "precio": 17290,
+      "media": null,
+      "descripcion": "Cerco Lineal de 50x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 7,
+      "nombre": "Módulo",
+      "alto": 110,
+      "ancho": 140,
+      "panos": 2,
+      "puerta": "No",
+      "peso": "5 Kg",
+      "precio": 66230,
+      "media": null,
+      "descripcion": "Módulo de 140x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114427359.webp",
+          "alt": "1643114427359"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114414899.webp",
+          "alt": "1643114414899"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114444136.webp",
+          "alt": "1643114444136"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/1643114456715.webp",
+          "alt": "1643114456715"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Módulo",
+      "alto": 80,
+      "ancho": 140,
+      "panos": 2,
+      "puerta": "No",
+      "peso": "4 Kg",
+      "precio": 54580,
+      "media": null,
+      "descripcion": "Módulo de 140x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 9,
+      "nombre": "Módulo",
+      "alto": 60,
+      "ancho": 100,
+      "panos": 2,
+      "puerta": "No",
+      "peso": "3 Kg",
+      "precio": 41160,
+      "media": null,
+      "descripcion": "Módulo de 100x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 10,
+      "nombre": "Módulo puerta",
+      "alto": 110,
+      "ancho": 70,
+      "panos": 1,
+      "puerta": "Si",
+      "peso": "3 Kg",
+      "precio": 41010,
+      "media": null,
+      "descripcion": "Módulo puerta de 70x110 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/modulo puerta.webp",
+          "alt": "modulo puerta"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Módulo puerta",
+      "alto": 80,
+      "ancho": 70,
+      "panos": 1,
+      "puerta": "Si",
+      "peso": "2 Kg",
+      "precio": 27940,
+      "media": null,
+      "descripcion": "Módulo puerta de 70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/cercos/modulo puerta 80.webp",
+          "alt": "modulo puerta 80"
+        }
+      ]
+    }
+  ],
+  "aves": [
+    {
+      "id": 1,
+      "nombre": "Jaula Ave Colgante",
+      "largo": 33,
+      "ancho": 26,
+      "alto": 38,
+      "peso": "1,4 Kg",
+      "precio": 35600,
+      "media": null,
+      "descripcion": "Jaula Ave Colgante de 33x26x38 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/aves12.webp",
+          "alt": "aves12"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Jaula Ave Colgante",
+      "largo": 44,
+      "ancho": 27,
+      "alto": 43,
+      "peso": "2 Kg",
+      "precio": 47400,
+      "media": null,
+      "descripcion": "Jaula Ave Colgante de 44x27x43 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/aves13.webp",
+          "alt": "aves13"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Jaula Ave Colgante",
+      "largo": 52,
+      "ancho": 40,
+      "alto": 55,
+      "peso": "2,8 Kg",
+      "precio": 59000,
+      "media": null,
+      "descripcion": "Jaula Ave Colgante de 52x40x55 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/aves14.webp",
+          "alt": "aves14"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Jaula Ave",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "8 Kg",
+      "precio": 127900,
+      "media": null,
+      "descripcion": "Jaula Ave de 60x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_125935.webp",
+          "alt": "IMG_20250312_125935"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/0kJV1JfV70Y?si=-ORCX7lykplUD3Br",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_125923.webp",
+          "alt": "IMG_20250312_125923"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_130008.webp",
+          "alt": "IMG_20250312_130008"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_130203.webp",
+          "alt": "IMG_20250312_130203"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Jaula Ave",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "14 Kg",
+      "precio": 206650,
+      "media": null,
+      "descripcion": "Jaula Ave de 80x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 6,
+      "nombre": "Jaula Ave",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 100,
+      "peso": "12 Kg",
+      "precio": 194030,
+      "media": null,
+      "descripcion": "Jaula Ave de 60x60x100 cm. No incluye la base cuadrada de abajo",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75.webp",
+          "alt": "60x60x100 y base comun de 75"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75 2.webp",
+          "alt": "60x60x100 y base comun de 75 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75 3.webp",
+          "alt": "60x60x100 y base comun de 75 3"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75 especial con 2 bandejas  2.webp",
+          "alt": "60x60x100 y base comun de 75 especial con 2 bandejas  2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75 especial con 2 bandejas .webp",
+          "alt": "60x60x100 y base comun de 75 especial con 2 bandejas "
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Jaula Ave",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 100,
+      "peso": "16 Kg",
+      "precio": 246270,
+      "media": null,
+      "descripcion": "Jaula Ave de 80x80x100 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 8,
+      "nombre": "Jaula Ave",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 160,
+      "peso": "28 Kg",
+      "precio": 351860,
+      "media": null,
+      "descripcion": "Jaula Ave de 80x80x160 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/80x80x160 y base de 30 3.webp",
+          "alt": "80x80x160 y base de 30 3"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/80x80x160 y base de 30 3~2.webp",
+          "alt": "80x80x160 y base de 30 3~2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/80x80x160 y base reforzada de 30 2.webp",
+          "alt": "80x80x160 y base reforzada de 30 2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/80x80x160 y base reforzada de 30 3.webp",
+          "alt": "80x80x160 y base reforzada de 30 3"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Base (Reforzada)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 75,
+      "peso": "10 Kg",
+      "precio": 143600,
+      "media": null,
+      "descripcion": "Base (Reforzada) de 60x60x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_130031.webp",
+          "alt": "IMG_20250312_130031"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20250312_130038.webp",
+          "alt": "IMG_20250312_130038"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Base (Reforzada)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 75,
+      "peso": "12 Kg",
+      "precio": 160200,
+      "media": null,
+      "descripcion": "Base (Reforzada) de 80x80x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 11,
+      "nombre": "Base (Reforzada)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 30,
+      "peso": "8 Kg",
+      "precio": 128900,
+      "media": null,
+      "descripcion": "Base (Reforzada) de 60x60x30 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 12,
+      "nombre": "Base (Reforzada)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 30,
+      "peso": "10 Kg",
+      "precio": 145200,
+      "media": null,
+      "descripcion": "Base (Reforzada) de 80x80x30 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/80x80x160 y base reforzada de 30 4.webp",
+          "alt": "80x80x160 y base reforzada de 30 4"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Base (Común)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 75,
+      "peso": "6 Kg",
+      "precio": 120000,
+      "media": null,
+      "descripcion": "Base (Común) de 60x60x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/60x60x100 y base comun de 75 - copia.webp",
+          "alt": "60x60x100 y base comun de 75 - copia"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Base (Común)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 75,
+      "peso": "7 Kg",
+      "precio": 131400,
+      "media": null,
+      "descripcion": "Base (Común) de 80x80x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    }
+  ],
+  "racks": [
+    {
+      "id": 1,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "19 cm",
+      "capacidad": "25 ud.",
+      "precio": 28770,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017.webp",
+          "alt": "IMG-20260209-WA0017"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-3.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-3.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018.webp",
+          "alt": "IMG-20260209-WA0018"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "22 cm",
+      "capacidad": "25 ud.",
+      "precio": 29190,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018-2.webp",
+          "alt": "IMG-20260209-WA0018"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-4.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-4.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010-2.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017-2.webp",
+          "alt": "IMG-20260209-WA0017"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "23 cm",
+      "capacidad": "20 ud.",
+      "precio": 28230,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-5.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-5.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010-3.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017-3.webp",
+          "alt": "IMG-20260209-WA0017"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018-3.webp",
+          "alt": "IMG-20260209-WA0018"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "25 cm",
+      "capacidad": "25 ud.",
+      "precio": 29790,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017-4.webp",
+          "alt": "IMG-20260209-WA0017"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-6.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-6.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010-4.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018-4.webp",
+          "alt": "IMG-20260209-WA0018"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "27 cm",
+      "capacidad": "25 ud.",
+      "precio": 30640,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017-5.webp",
+          "alt": "IMG-20260209-WA0017"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-7.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-7.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010-5.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018-5.webp",
+          "alt": "IMG-20260209-WA0018"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Cajón porta platos",
+      "altura": "----",
+      "diametro": "29 cm",
+      "capacidad": "25 ud.",
+      "precio": 30880,
+      "media": null,
+      "descripcion": "Cajón porta platos. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0017-6.webp",
+          "alt": "IMG-20260209-WA0017"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25 cm 25 unid-8.webp",
+          "alt": "25 cm 25 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/25cm  25 uunid-8.webp",
+          "alt": "25cm  25 uunid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0010-6.webp",
+          "alt": "IMG-20260209-WA0010"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0018-6.webp",
+          "alt": "IMG-20260209-WA0018"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Cajón porta jarras",
+      "altura": "20 cm",
+      "diametro": "15 cm",
+      "capacidad": "6 ud.",
+      "precio": 28230,
+      "media": null,
+      "descripcion": "Cajón porta jarras. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0013.webp",
+          "alt": "IMG-20260209-WA0013"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/WhatsApp Image 2021-12-15 at 8.40.07 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.40.07 AM"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/WhatsApp Image 2021-12-15 act 8.40.06 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 act 8.40.06 AM"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/WhatsApp Image 2021-12-15 at 8.40.06 AM.webp",
+          "alt": "WhatsApp Image 2021-12-15 at 8.40.06 AM"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Cajón porta copas",
+      "altura": "16 cm",
+      "diametro": "6,5 cm",
+      "capacidad": "54 ud.",
+      "precio": 43770,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Cajón porta copas",
+      "altura": "18 cm",
+      "diametro": "6,5 cm",
+      "capacidad": "54 ud.",
+      "precio": 44380,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-2.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-2.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-2.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Cajón porta copas",
+      "altura": "23 cm",
+      "diametro": "6,5 cm",
+      "capacidad": "54 ud.",
+      "precio": 44840,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-3.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-3.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-3.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Cajón porta copas",
+      "altura": "18 cm",
+      "diametro": "7 cm",
+      "capacidad": "40 ud.",
+      "precio": 43920,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-4.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-4.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-4.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Cajón porta copas",
+      "altura": "23 cm",
+      "diametro": "7 cm",
+      "capacidad": "40 ud.",
+      "precio": 44340,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-5.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-5.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-5.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Cajón porta copas",
+      "altura": "16 cm",
+      "diametro": "8 cm",
+      "capacidad": "40 ud.",
+      "precio": 43030,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-6.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-6.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-6.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Cajón porta copas",
+      "altura": "18 cm",
+      "diametro": "8 cm",
+      "capacidad": "40 ud.",
+      "precio": 43340,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-7.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-7.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-7.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Cajón porta copas",
+      "altura": "23 cm",
+      "diametro": "8 cm",
+      "capacidad": "40 ud.",
+      "precio": 43860,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-8.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/17x8  40 unid-8.webp",
+          "alt": "17x8  40 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-8.webp",
+          "alt": "eggggg"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Cajón porta copas",
+      "altura": "23 cm",
+      "diametro": "9 cm",
+      "capacidad": "28 ud.",
+      "precio": 42920,
+      "media": null,
+      "descripcion": "Cajón porta copas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/IMG-20260209-WA0012-9.webp",
+          "alt": "IMG-20260209-WA0012"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/23x9 28 unid.webp",
+          "alt": "23x9 28 unid"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/racks/eggggg-9.webp",
+          "alt": "eggggg"
+        }
+      ]
+    }
+  ],
+  "parideras": [
+    {
+      "id": 1,
+      "nombre": "Paridera",
+      "largo": 70,
+      "ancho": 70,
+      "alto": 19,
+      "peso": "4 kg",
+      "precio": 108340,
+      "media": null,
+      "descripcion": "Paridera de 70x70x19 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras1.webp",
+          "alt": "parideras1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Paridera",
+      "largo": 90,
+      "ancho": 90,
+      "alto": 22,
+      "peso": "8 kg",
+      "precio": 137070,
+      "media": null,
+      "descripcion": "Paridera de 90x90x22 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras2.webp",
+          "alt": "parideras2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Corral con Paridera",
+      "largo": 70,
+      "ancho": 70,
+      "alto": 60,
+      "peso": "----",
+      "precio": 198360,
+      "media": null,
+      "descripcion": "Corral con Paridera de 70x70x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras3.webp",
+          "alt": "parideras3"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Corral con Paridera",
+      "largo": 90,
+      "ancho": 90,
+      "alto": 60,
+      "peso": "----",
+      "precio": 248170,
+      "media": null,
+      "descripcion": "Corral con Paridera de 90x90x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 5,
+      "nombre": "Corral con Paridera",
+      "largo": 70,
+      "ancho": 70,
+      "alto": 80,
+      "peso": "----",
+      "precio": 229760,
+      "media": null,
+      "descripcion": "Corral con Paridera de 70x70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras5.webp",
+          "alt": "parideras5"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/IMG_20250314_122408.webp",
+          "alt": "IMG_20250314_122408"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/IMG_20250314_122419.webp",
+          "alt": "IMG_20250314_122419"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/IMG_20250314_122429.webp",
+          "alt": "IMG_20250314_122429"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Corral con Paridera",
+      "largo": 90,
+      "ancho": 90,
+      "alto": 80,
+      "peso": "----",
+      "precio": 283400,
+      "media": null,
+      "descripcion": "Corral con Paridera de 90x90x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": []
+    },
+    {
+      "id": 7,
+      "nombre": "Pileta (forma de hueso)",
+      "largo": 140,
+      "ancho": 90,
+      "alto": 25,
+      "peso": "20 kg",
+      "precio": 195960,
+      "media": null,
+      "descripcion": "Pileta (forma de hueso) de 140x90x25 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras7.webp",
+          "alt": "parideras7"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Pileta (forma de huella)",
+      "largo": 125,
+      "ancho": 125,
+      "alto": 23,
+      "peso": "16 kg",
+      "precio": 195960,
+      "media": null,
+      "descripcion": "Pileta (forma de huella) de 125x125x23 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras8.webp",
+          "alt": "parideras8"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Sillón Redondo",
+      "largo": "50diam",
+      "ancho": "50diam",
+      "alto": 18,
+      "peso": "2 kg",
+      "precio": 100010,
+      "media": null,
+      "descripcion": "Sillón Redondo de 50diamx50diamx18 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras9.webp",
+          "alt": "parideras9"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Sillón Rectangular",
+      "largo": 93,
+      "ancho": 36,
+      "alto": 50,
+      "peso": "8 kg",
+      "precio": 187850,
+      "media": null,
+      "descripcion": "Sillón Rectangular de 93x36x50 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/parideras/parideras10.webp",
+          "alt": "parideras10"
+        }
+      ]
+    }
+  ],
+  "varios1": [
+    {
+      "id": 1,
+      "nombre": "Estacas tipo U",
+      "largo": "----",
+      "ancho": "3 cm",
+      "alto": "21 cm",
+      "peso": "0,53 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Estacas tipo U de 3 cmx21 cm cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-01-estacas-tipo-u-3-cmx21-cm-01.jpg",
+          "alt": "Estacas tipo U - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Jaula Gallo (Común)",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 60,
+      "peso": "3,5 Kg",
+      "precio": 46000,
+      "media": null,
+      "descripcion": "Jaula Gallo (Común) de 60x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-02-jaula-gallo-com-n-60x60x60-01.jpg",
+          "alt": "Jaula Gallo (Común) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Jaula Gallo (Común)",
+      "largo": 80,
+      "ancho": 80,
+      "alto": 80,
+      "peso": "4,7 Kg",
+      "precio": 61930,
+      "media": null,
+      "descripcion": "Jaula Gallo (Común) de 80x80x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-03-jaula-gallo-com-n-80x80x80-01.jpg",
+          "alt": "Jaula Gallo (Común) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Jaula Gallo (Reforzada)",
+      "largo": 70,
+      "ancho": 70,
+      "alto": 80,
+      "peso": "8,2 Kg",
+      "precio": 104890,
+      "media": null,
+      "descripcion": "Jaula Gallo (Reforzada) de 70x70x80 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-04-jaula-gallo-reforzada-70x70x80-01.jpg",
+          "alt": "Jaula Gallo (Reforzada) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Esquinero (3 estantes)",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,7 Kg",
+      "precio": 11070,
+      "media": null,
+      "descripcion": "Esquinero (3 estantes). Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-05-esquinero-3-estantes-01.jpg",
+          "alt": "Esquinero (3 estantes) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Esquinero (2 estantes)",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,5 Kg",
+      "precio": 9380,
+      "media": null,
+      "descripcion": "Esquinero (2 estantes). Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-06-esquinero-2-estantes-01.jpg",
+          "alt": "Esquinero (2 estantes) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Ganchos Perchero",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,3 Kg",
+      "precio": 11060,
+      "media": null,
+      "descripcion": "Ganchos Perchero. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-07-ganchos-perchero-01.jpg",
+          "alt": "Ganchos Perchero - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Percha 3mm",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,7 Kg",
+      "precio": 9230,
+      "media": null,
+      "descripcion": "Percha 3mm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-08-percha-3mm-01.jpg",
+          "alt": "Percha 3mm - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Percha 4mm",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,11 Kg",
+      "precio": 9270,
+      "media": null,
+      "descripcion": "Percha 4mm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-09-percha-4mm-01.jpg",
+          "alt": "Percha 4mm - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Secaplatos",
+      "largo": 44,
+      "ancho": 30,
+      "alto": 31,
+      "peso": "2 kg",
+      "precio": 30070,
+      "media": null,
+      "descripcion": "Secaplatos de 44x30x31 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-10-secaplatos-44x30x31-01.jpg",
+          "alt": "Secaplatos - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Comedero (Simple)",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,5 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Comedero (Simple). Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-11-comedero-simple-01.jpg",
+          "alt": "Comedero (Simple) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Comedero (Doble)",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "1 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Comedero (Doble). Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-12-comedero-doble-01.jpg",
+          "alt": "Comedero (Doble) - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Porta servilletas",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,15 Kg",
+      "precio": 10490,
+      "media": null,
+      "descripcion": "Porta servilletas. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-13-porta-servilletas-01.jpg",
+          "alt": "Porta servilletas - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Organizador recto",
+      "largo": "----",
+      "ancho": "----",
+      "alto": "----",
+      "peso": "0,5 Kg",
+      "precio": 10050,
+      "media": null,
+      "descripcion": "Organizador recto. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-1/varios-1-14-organizador-recto-01.jpg",
+          "alt": "Organizador recto - imagen 1"
+        }
+      ]
+    }
+  ],
+  "varios2": [
+    {
+      "id": 1,
+      "nombre": "Tendedero con alas",
+      "largo": 160,
+      "ancho": 60,
+      "alto": 100,
+      "peso": "----",
+      "precio": 31700,
+      "media": null,
+      "descripcion": "Tendedero con alas de 160x60x100 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113177790.webp",
+          "alt": "FB_IMG_1758113177790"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1736879433167.webp",
+          "alt": "FB_IMG_1736879433167"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1736879436228.webp",
+          "alt": "FB_IMG_1736879436228"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113203878.webp",
+          "alt": "FB_IMG_1758113203878"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113235329.webp",
+          "alt": "FB_IMG_1758113235329"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113292816.webp",
+          "alt": "FB_IMG_1758113292816"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/Tender 1.webp",
+          "alt": "Tender 1"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/Tender 3.webp",
+          "alt": "Tender 3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Tendedero sin alas",
+      "largo": 100,
+      "ancho": 60,
+      "alto": 100,
+      "peso": "----",
+      "precio": 29000,
+      "media": null,
+      "descripcion": "Tendedero sin alas de 100x60x100 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/Tender 1-2.webp",
+          "alt": "Tender 1"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1736879433167-2.webp",
+          "alt": "FB_IMG_1736879433167"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1736879436228-2.webp",
+          "alt": "FB_IMG_1736879436228"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113177790-2.webp",
+          "alt": "FB_IMG_1758113177790"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113203878-2.webp",
+          "alt": "FB_IMG_1758113203878"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113235329-2.webp",
+          "alt": "FB_IMG_1758113235329"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/FB_IMG_1758113292816-2.webp",
+          "alt": "FB_IMG_1758113292816"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/varios2/Tender 3-2.webp",
+          "alt": "Tender 3"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Jaula Conejo",
+      "largo": 60,
+      "ancho": 60,
+      "alto": 40,
+      "peso": "7,6 Kg",
+      "precio": 119550,
+      "media": null,
+      "descripcion": "Jaula Conejo de 60x60x40 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-03-jaula-conejo-60x60x40-01.jpg",
+          "alt": "Jaula Conejo - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Jaula Conejo",
+      "largo": 80,
+      "ancho": 60,
+      "alto": 40,
+      "peso": "9 Kg",
+      "precio": 142880,
+      "media": null,
+      "descripcion": "Jaula Conejo de 80x60x40 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-04-jaula-conejo-80x60x40-01.jpg",
+          "alt": "Jaula Conejo - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Vinoteca cuadrada",
+      "largo": 80,
+      "ancho": 80,
+      "alto": "20 botellas",
+      "peso": "4 Kg",
+      "precio": 31770,
+      "media": null,
+      "descripcion": "Vinoteca cuadrada de 80x80x20 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-05-vinoteca-cuadrada-80x80x20-botellas-01.jpg",
+          "alt": "Vinoteca cuadrada - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Vinoteca cuadrada",
+      "largo": 50,
+      "ancho": 50,
+      "alto": "9 botellas",
+      "peso": "1 Kg",
+      "precio": 24290,
+      "media": null,
+      "descripcion": "Vinoteca cuadrada de 50x50x9 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-06-vinoteca-cuadrada-50x50x9-botellas-01.jpg",
+          "alt": "Vinoteca cuadrada - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Vinoteca cuadrada",
+      "largo": 75,
+      "ancho": 75,
+      "alto": "15 botellas",
+      "peso": "5 Kg",
+      "precio": 44350,
+      "media": null,
+      "descripcion": "Vinoteca cuadrada de 75x75x15 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-07-vinoteca-cuadrada-75x75x15-botellas-01.jpg",
+          "alt": "Vinoteca cuadrada - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Vinoteca cuadrada",
+      "largo": 80,
+      "ancho": 80,
+      "alto": "40 botellas",
+      "peso": "8,5 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Vinoteca cuadrada de 80x80x40 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-08-vinoteca-cuadrada-80x80x40-botellas-01.jpg",
+          "alt": "Vinoteca cuadrada - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Vinoteca redonda",
+      "largo": "----",
+      "ancho": "80 Diámetro",
+      "alto": "18 botellas",
+      "peso": "3,5 Kg",
+      "precio": 32040,
+      "media": null,
+      "descripcion": "Vinoteca redonda de 80 Diámetrox18 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-09-vinoteca-redonda-80-di-metrox18-botellas-01.jpg",
+          "alt": "Vinoteca redonda - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Vinoteca vertical",
+      "largo": 62,
+      "ancho": 35,
+      "alto": "4 botellas",
+      "peso": "1 Kg",
+      "precio": 22000,
+      "media": null,
+      "descripcion": "Vinoteca vertical de 62x35x4 botellas cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-10-vinoteca-vertical-62x35x4-botellas-01.jpg",
+          "alt": "Vinoteca vertical - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Parrilla Tambor",
+      "largo": 125,
+      "ancho": 60,
+      "alto": 125,
+      "peso": "--",
+      "precio": 218000,
+      "media": null,
+      "descripcion": "Parrilla Tambor de 125x60x125 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-11-parrilla-tambor-125x60x125-01.jpg",
+          "alt": "Parrilla Tambor - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Pala y Atizazdor",
+      "largo": "--",
+      "ancho": "--",
+      "alto": "--",
+      "peso": "--",
+      "precio": 9000,
+      "media": null,
+      "descripcion": "Pala y Atizazdor. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-12-pala-y-atizazdor-01.jpg",
+          "alt": "Pala y Atizazdor - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Brasero",
+      "largo": 40,
+      "ancho": 21,
+      "alto": 35,
+      "peso": "--",
+      "precio": 19800,
+      "media": null,
+      "descripcion": "Brasero de 40x21x35 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/varios-2/varios-2-13-brasero-40x21x35-01.jpg",
+          "alt": "Brasero - imagen 1"
+        }
+      ]
+    }
+  ],
+  "canastos": [
+    {
+      "id": 1,
+      "nombre": "Canasto General",
+      "largo": 45,
+      "ancho": 35,
+      "alto": 11,
+      "peso": "1,5 Kg",
+      "precio": 30990,
+      "media": null,
+      "descripcion": "Canasto General de 45x35x11 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-01-canasto-general-45x35x11-01.jpg",
+          "alt": "Canasto General - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Canasto General",
+      "largo": 45,
+      "ancho": 48,
+      "alto": 11,
+      "peso": "2 Kg",
+      "precio": 39100,
+      "media": null,
+      "descripcion": "Canasto General de 45x48x11 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-02-canasto-general-45x48x11-01.jpg",
+          "alt": "Canasto General - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Canasto General Individual",
+      "largo": 45,
+      "ancho": 20,
+      "alto": 10,
+      "peso": "1,3 Kg",
+      "precio": 27350,
+      "media": null,
+      "descripcion": "Canasto General Individual de 45x20x10 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-03-canasto-general-individual-45x20x10-01.jpg",
+          "alt": "Canasto General Individual - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Canasto General Doble",
+      "largo": 45,
+      "ancho": 20,
+      "alto": 44,
+      "peso": "2,5 Kg",
+      "precio": 40450,
+      "media": null,
+      "descripcion": "Canasto General Doble de 45x20x44 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-04-canasto-general-doble-45x20x44-01.jpg",
+          "alt": "Canasto General Doble - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Canasto General Triple",
+      "largo": 45,
+      "ancho": 20,
+      "alto": 56,
+      "peso": "4 Kg",
+      "precio": 53560,
+      "media": null,
+      "descripcion": "Canasto General Triple de 45x20x56 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-05-canasto-general-triple-45x20x56-01.jpg",
+          "alt": "Canasto General Triple - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Canasto Especiero Individual",
+      "largo": 46,
+      "ancho": "11,5",
+      "alto": 10,
+      "peso": "0,9 Kg",
+      "precio": 23810,
+      "media": null,
+      "descripcion": "Canasto Especiero Individual de 46x11,5x10 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-06-canasto-especiero-individual-46x11-5x10-01.jpg",
+          "alt": "Canasto Especiero Individual - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Canasto Especiero Doble",
+      "largo": 46,
+      "ancho": "11,5",
+      "alto": 36,
+      "peso": "1,4 Kg",
+      "precio": 36920,
+      "media": null,
+      "descripcion": "Canasto Especiero Doble de 46x11,5x36 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-07-canasto-especiero-doble-46x11-5x36-01.jpg",
+          "alt": "Canasto Especiero Doble - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Canasto Especiero Triple",
+      "largo": 46,
+      "ancho": "11,5",
+      "alto": 60,
+      "peso": "3 Kg",
+      "precio": 47210,
+      "media": null,
+      "descripcion": "Canasto Especiero Triple de 46x11,5x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-08-canasto-especiero-triple-46x11-5x60-01.jpg",
+          "alt": "Canasto Especiero Triple - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Canasto Platos",
+      "largo": 44,
+      "ancho": 29,
+      "alto": 11,
+      "peso": "1,5 Kg",
+      "precio": 31820,
+      "media": null,
+      "descripcion": "Canasto Platos de 44x29x11 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-09-canasto-platos-44x29x11-01.jpg",
+          "alt": "Canasto Platos - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Canasto Platos",
+      "largo": 44,
+      "ancho": 31,
+      "alto": 11,
+      "peso": "1,6 Kg",
+      "precio": 32760,
+      "media": null,
+      "descripcion": "Canasto Platos de 44x31x11 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-10-canasto-platos-44x31x11-01.jpg",
+          "alt": "Canasto Platos - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Canasto Platos Deluxe",
+      "largo": 44,
+      "ancho": 29,
+      "alto": 16,
+      "peso": "1,9 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Canasto Platos Deluxe de 44x29x16 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-11-canasto-platos-deluxe-44x29x16-01.jpg",
+          "alt": "Canasto Platos Deluxe - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Canasto Platos Deluxe",
+      "largo": 44,
+      "ancho": 31,
+      "alto": 16,
+      "peso": "2 Kg",
+      "precio": null,
+      "media": null,
+      "descripcion": "Canasto Platos Deluxe de 44x31x16 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-12-canasto-platos-deluxe-44x31x16-01.jpg",
+          "alt": "Canasto Platos Deluxe - imagen 1"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Guía Telescópica",
+      "largo": 45,
+      "ancho": "1,5",
+      "alto": 4,
+      "peso": "0,8 Kg",
+      "precio": 3320,
+      "media": null,
+      "descripcion": "Guía Telescópica de 45x1,5x4 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/canastos/canastos-13-gu-a-telesc-pica-45x1-5x4-01.jpg",
+          "alt": "Guía Telescópica - imagen 1"
+        }
+      ]
+    }
+  ]
+}

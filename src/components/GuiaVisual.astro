@@ -1,0 +1,337 @@
+---
+interface GuiaItem {
+  tipo?: 'imagen' | 'video';
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  idBase: string;
+  titulo?: string;
+  imagenes: GuiaItem[];
+}
+const { titulo = 'Guía visual de modelos', idBase, imagenes } = Astro.props;
+const youtubeVideoId = (url: string) => {
+  try {
+    const parsedUrl = new URL(url);
+    const pathParts = parsedUrl.pathname.split('/').filter(Boolean);
+    if (parsedUrl.hostname.includes('youtu.be')) return pathParts[0] ?? '';
+    const pathIndex = pathParts.findIndex((part) => ['shorts', 'embed'].includes(part));
+    return parsedUrl.searchParams.get('v') || (pathIndex >= 0 ? pathParts[pathIndex + 1] : '') || '';
+  } catch {
+    return '';
+  }
+};
+const youtubeThumbnail = (url: string) => {
+  const videoId = youtubeVideoId(url);
+  return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '';
+};
+const youtubeEmbed = (url: string) => {
+  const videoId = youtubeVideoId(url);
+  return videoId ? `https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${encodeURIComponent(Astro.url.origin)}&playsinline=1&rel=0` : url;
+};
+---
+
+{imagenes.length > 0 && (
+  <section class="visual-guide" aria-labelledby={`visual-guide-title-${idBase}`}>
+    <div class="visual-guide-heading">
+      <p class="visual-guide-kicker">Información de la línea</p>
+      <h4 id={`visual-guide-title-${idBase}`}>{titulo}</h4>
+    </div>
+    <div class="visual-guide-gallery" data-visual-guide={idBase}>
+      <div class="visual-guide-controls">
+        {imagenes.map((imagen, index) => (
+          <input
+            class="visual-guide-control"
+            name={`visual-guide-${idBase}`}
+            type="radio"
+            id={`visual-guide-${idBase}-${index}`}
+            checked={index === 0}
+            aria-label={`Ver ${imagen.alt}`}
+          />
+        ))}
+      </div>
+      <div class="visual-guide-stage">
+        <div class="visual-guide-track">
+          {imagenes.map((imagen, index) => (
+            <div class="visual-guide-slide">
+            {imagen.tipo === 'video' ? (
+              <iframe
+                class="visual-guide-image"
+                src={youtubeEmbed(imagen.src)}
+                title={imagen.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+            ) : (
+              <img
+                class="visual-guide-image"
+                src={imagen.src}
+                alt={imagen.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                data-guide-image
+              />
+            )}
+            </div>
+          ))}
+        </div>
+        <button class="visual-guide-swipe-zone visual-guide-swipe-zone-prev" type="button" aria-label="Contenido explicativo anterior"></button>
+        <button class="visual-guide-swipe-zone visual-guide-swipe-zone-next" type="button" aria-label="Contenido explicativo siguiente"></button>
+      </div>
+      <div class="visual-guide-thumbnails" aria-label="Seleccionar imagen explicativa">
+        {imagenes.map((imagen, index) => (
+          <label class="visual-guide-thumbnail" data-guide-index={index} for={`visual-guide-${idBase}-${index}`}>
+            <img src={imagen.tipo === 'video' ? youtubeThumbnail(imagen.src) : imagen.src} alt="" loading="lazy" decoding="async" />
+            {imagen.tipo === 'video' && <span class="visual-guide-video-label">Video</span>}
+            <span>{String(index + 1).padStart(2, '0')}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+    <dialog class="visual-guide-modal" aria-labelledby={`visual-guide-modal-title-${idBase}`}>
+      <div class="visual-guide-modal-content">
+        <button class="modal-close visual-guide-modal-close" type="button" aria-label="Cerrar imagen ampliada">&times;</button>
+        <div class="visual-guide-modal-toolbar" aria-label="Controles de zoom">
+          <button type="button" data-guide-zoom-out aria-label="Reducir zoom">−</button>
+          <button type="button" data-guide-zoom-reset aria-label="Restablecer zoom">100%</button>
+          <button type="button" data-guide-zoom-in aria-label="Aumentar zoom">+</button>
+        </div>
+        <div class="visual-guide-modal-viewport">
+          <img class="visual-guide-modal-image" alt="" />
+        </div>
+        <p class="visual-guide-modal-title" id={`visual-guide-modal-title-${idBase}`}></p>
+      </div>
+    </dialog>
+  </section>
+)}
+
+<script define:vars={{ idBase }}>
+  const gallery = document.querySelector(`[data-visual-guide="${idBase}"]`);
+  const section = gallery?.closest('[data-catalog-section]');
+  const sectionToggle = section?.querySelector('.section-toggle');
+  const controls = gallery ? [...gallery.querySelectorAll('.visual-guide-control')] : [];
+  const stage = gallery?.querySelector('.visual-guide-stage');
+  const track = gallery?.querySelector('.visual-guide-track');
+  const videoFrames = gallery ? [...gallery.querySelectorAll('iframe')] : [];
+  const swipeZones = gallery ? [...gallery.querySelectorAll('.visual-guide-swipe-zone')] : [];
+  const thumbnails = gallery ? [...gallery.querySelectorAll('.visual-guide-thumbnail')] : [];
+  const imageModal = gallery?.closest('.visual-guide')?.querySelector('.visual-guide-modal');
+  const modalImage = imageModal?.querySelector('.visual-guide-modal-image');
+  const modalTitle = imageModal?.querySelector('.visual-guide-modal-title');
+  const modalViewport = imageModal?.querySelector('.visual-guide-modal-viewport');
+  let zoomScale = 1;
+  let panX = 0;
+  let panY = 0;
+  let panStartX = 0;
+  let panStartY = 0;
+  let panOriginX = 0;
+  let panOriginY = 0;
+  const activePointers = new Map();
+  let pinchStartDistance = 0;
+  let pinchStartScale = 1;
+  let isPinching = false;
+  let currentIndex = controls.findIndex((control) => control.checked);
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let dragOffsetX = 0;
+  let activePointerId = null;
+  let dragStartTime = 0;
+  let isSwipeAnimating = false;
+
+  const getSwipeThreshold = () => Math.max(70, stage.clientWidth * 0.2);
+
+  const pauseVideos = () => {
+    videoFrames.forEach((frame) => {
+      frame.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*');
+    });
+  };
+
+  const renderGuide = (index, animate = true) => {
+    if (!track || !controls.length) return;
+    if (index !== currentIndex) pauseVideos();
+    currentIndex = Math.max(0, Math.min(index, controls.length - 1));
+    controls[currentIndex].checked = true;
+    track.style.transition = animate ? 'transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+    track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+    thumbnails.forEach((thumbnail, thumbnailIndex) => thumbnail.classList.toggle('is-active', thumbnailIndex === currentIndex));
+  };
+
+  const finishDrag = () => {
+    if (isSwipeAnimating || !stage || !track) return;
+    const elapsedMs = Math.max(16, Date.now() - dragStartTime);
+    const velocity = Math.abs(dragOffsetX) / elapsedMs;
+    const shouldAdvance = Math.abs(dragOffsetX) > getSwipeThreshold() || velocity > 0.9;
+    if (shouldAdvance) {
+      isSwipeAnimating = true;
+      const direction = dragOffsetX < 0 ? 1 : -1;
+      const nextIndex = Math.max(0, Math.min(currentIndex + direction, controls.length - 1));
+      renderGuide(nextIndex);
+      window.setTimeout(() => {
+        isSwipeAnimating = false;
+        activePointerId = null;
+        dragOffsetX = 0;
+      }, 180);
+      return;
+    }
+    renderGuide(currentIndex);
+    activePointerId = null;
+    dragOffsetX = 0;
+  };
+
+  const playCurrentVideo = () => {
+    const frame = videoFrames[currentIndex];
+    if (!frame?.contentWindow) return;
+    frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+  };
+
+  sectionToggle?.addEventListener('click', () => {
+    if (section?.classList.contains('is-open')) pauseVideos();
+  });
+  document.addEventListener('catalog:open-section', (event) => {
+    const customEvent = event;
+    if (section?.id !== customEvent.detail.sectionId) pauseVideos();
+  });
+
+  controls.forEach((control, index) => control.addEventListener('change', () => renderGuide(index)));
+  thumbnails.forEach((thumbnail, index) => thumbnail.addEventListener('click', (event) => {
+    event.preventDefault();
+    renderGuide(index);
+  }));
+  const setZoom = (scale) => {
+    zoomScale = Math.min(4, Math.max(1, scale));
+    if (zoomScale === 1) {
+      panX = 0;
+      panY = 0;
+    }
+    if (modalImage) {
+      modalImage.classList.toggle('is-zoomed', zoomScale > 1);
+      modalImage.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoomScale})`;
+    }
+    const reset = imageModal?.querySelector('[data-guide-zoom-reset]');
+    if (reset) reset.textContent = `${Math.round(zoomScale * 100)}%`;
+  };
+  const openImageModal = (image) => {
+    if (!imageModal || !modalImage || !modalTitle) return;
+    modalImage.src = image.src;
+    modalImage.alt = image.alt;
+    modalTitle.textContent = image.alt;
+    setZoom(1);
+    imageModal.showModal();
+  };
+  gallery?.querySelectorAll('[data-guide-image]').forEach((image) => image.addEventListener('click', () => openImageModal(image)));
+  imageModal?.querySelector('.visual-guide-modal-close')?.addEventListener('click', () => imageModal.close());
+  imageModal?.addEventListener('click', (event) => {
+    if (event.target === imageModal) imageModal.close();
+  });
+  imageModal?.querySelector('[data-guide-zoom-out]')?.addEventListener('click', () => setZoom(zoomScale - 0.25));
+  imageModal?.querySelector('[data-guide-zoom-reset]')?.addEventListener('click', () => setZoom(1));
+  imageModal?.querySelector('[data-guide-zoom-in]')?.addEventListener('click', () => setZoom(zoomScale + 0.25));
+  modalViewport?.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    setZoom(zoomScale + (event.deltaY < 0 ? 0.25 : -0.25));
+  }, { passive: false });
+  modalViewport?.addEventListener('pointerdown', (event) => {
+    activePointers.set(event.pointerId, event);
+    if (activePointers.size === 2) {
+      isPinching = true;
+      panX = 0;
+      panY = 0;
+      setZoom(zoomScale);
+      const points = [...activePointers.values()];
+      pinchStartDistance = Math.hypot(points[0].clientX - points[1].clientX, points[0].clientY - points[1].clientY);
+      pinchStartScale = zoomScale;
+    } else {
+      panStartX = event.clientX;
+      panStartY = event.clientY;
+      panOriginX = panX;
+      panOriginY = panY;
+    }
+  });
+  modalViewport?.addEventListener('pointermove', (event) => {
+    if (!activePointers.has(event.pointerId)) return;
+    activePointers.set(event.pointerId, event);
+    if (isPinching && activePointers.size === 2 && pinchStartDistance) {
+      event.preventDefault();
+      const points = [...activePointers.values()];
+      const distance = Math.hypot(points[0].clientX - points[1].clientX, points[0].clientY - points[1].clientY);
+      modalImage?.classList.add('is-panning');
+      setZoom(pinchStartScale * (distance / pinchStartDistance));
+      return;
+    }
+    if (!isPinching && activePointers.size === 1 && zoomScale > 1) {
+      event.preventDefault();
+      panX = panOriginX + event.clientX - panStartX;
+      panY = panOriginY + event.clientY - panStartY;
+      modalImage?.classList.add('is-panning');
+      setZoom(zoomScale);
+      return;
+    }
+  });
+  const clearPointer = (event) => {
+    activePointers.delete(event.pointerId);
+    modalImage?.classList.remove('is-panning');
+    if (activePointers.size < 2) {
+      pinchStartDistance = 0;
+      isPinching = false;
+      const remainingPointer = [...activePointers.values()][0];
+      if (remainingPointer) {
+        panStartX = remainingPointer.clientX;
+        panStartY = remainingPointer.clientY;
+        panOriginX = panX;
+        panOriginY = panY;
+      }
+    }
+  };
+  modalViewport?.addEventListener('pointerup', clearPointer);
+  modalViewport?.addEventListener('pointercancel', clearPointer);
+  renderGuide(Math.max(0, currentIndex), false);
+
+  const startDrag = (event) => {
+    if (isSwipeAnimating || controls.length < 2 || event.pointerType === 'mouse') return;
+    activePointerId = event.pointerId;
+    touchStartX = event.clientX;
+    touchStartY = event.clientY;
+    dragStartTime = Date.now();
+    dragOffsetX = 0;
+    stage.classList.add('is-dragging');
+    track.style.transition = 'none';
+    stage.setPointerCapture?.(event.pointerId);
+  };
+
+  const moveDrag = (event) => {
+    if (isSwipeAnimating || activePointerId !== event.pointerId || !track) return;
+    const deltaX = event.clientX - touchStartX;
+    const deltaY = Math.abs(event.clientY - touchStartY);
+    if (deltaY > 18 && Math.abs(deltaX) < 12) return;
+    if (Math.abs(deltaX) > 4) event.preventDefault();
+    dragOffsetX = deltaX;
+    track.style.transform = `translate3d(calc(-${currentIndex * 100}% + ${deltaX}px), 0, 0)`;
+  };
+
+  const endDrag = () => {
+    stage.classList.remove('is-dragging');
+    if (Math.abs(dragOffsetX) < 10) playCurrentVideo();
+    finishDrag();
+  };
+
+  const cancelDrag = () => {
+    stage.classList.remove('is-dragging');
+    renderGuide(currentIndex);
+    activePointerId = null;
+    dragOffsetX = 0;
+  };
+
+  stage?.addEventListener('pointerdown', startDrag);
+  stage?.addEventListener('pointermove', moveDrag);
+  stage?.addEventListener('pointerup', endDrag);
+  stage?.addEventListener('pointercancel', cancelDrag);
+  swipeZones.forEach((zone) => {
+    zone.addEventListener('pointerdown', startDrag);
+    zone.addEventListener('pointermove', moveDrag);
+    zone.addEventListener('pointerup', endDrag);
+    zone.addEventListener('pointercancel', cancelDrag);
+  });
+</script>

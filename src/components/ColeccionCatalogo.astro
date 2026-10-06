@@ -1,0 +1,45 @@
+---
+import TablaProductos from './TablaProductos.astro';
+import TablaPersonalizada from './TablaPersonalizada.astro';
+
+interface Props {
+  clave: string;
+  productos: Record<string, unknown>;
+}
+
+const { clave, productos } = Astro.props;
+const listaPersonalizada = clave.startsWith('lista:')
+  ? (productos.listasPersonalizadas as { clave: string }[] | undefined)?.find((lista) => `lista:${lista.clave}` === clave)
+  : null;
+const columnasPorColeccion: Record<string, { campo: string; etiqueta: string; unidad?: string }[]> = {
+  corrales: [
+    { campo: 'alto', etiqueta: 'Alto', unidad: 'cm' }, { campo: 'ancho', etiqueta: 'Ancho', unidad: 'cm' },
+    { campo: 'panos', etiqueta: 'Paños' }, { campo: 'diametro', etiqueta: 'Diámetro', unidad: 'cm' },
+    { campo: 'puerta', etiqueta: 'Puerta' }, { campo: 'peso', etiqueta: 'Peso' }, { campo: 'precio', etiqueta: 'Precio' },
+  ],
+  cercos: [
+    { campo: 'alto', etiqueta: 'Alto', unidad: 'cm' }, { campo: 'ancho', etiqueta: 'Ancho', unidad: 'cm' },
+    { campo: 'panos', etiqueta: 'Paños' }, { campo: 'puerta', etiqueta: 'Puerta' }, { campo: 'peso', etiqueta: 'Peso' }, { campo: 'precio', etiqueta: 'Precio' },
+  ],
+  racks: [
+    { campo: 'altura', etiqueta: 'Altura' }, { campo: 'diametro', etiqueta: 'Diámetro' }, { campo: 'capacidad', etiqueta: 'Almacena hasta' }, { campo: 'precio', etiqueta: 'Precio' },
+  ],
+  mallas: [
+    { campo: 'cuadricula', etiqueta: 'Cuadrícula' }, { campo: 'ancho', etiqueta: 'Ancho', unidad: 'cm' }, { campo: 'alto', etiqueta: 'Alto', unidad: 'cm' },
+    { campo: 'peso', etiqueta: 'Peso' }, { campo: 'precioZincado', etiqueta: 'Precio zincado' }, { campo: 'precioCrudo', etiqueta: 'Precio crudo' },
+  ],
+};
+const titulos: Record<string, string> = {
+  jaulas: 'Caniles', cajasTransporte: 'Cajas de transporte', cajasPeluqueria: 'Cajas de transporte y mesa de peluquería',
+  corrales: 'Corrales', cercos: 'Cercos lineales y módulos', aves: 'Jaulas para aves', racks: 'Racks apilables',
+  parideras: 'Parideras y piletas', varios1: 'Productos varios 1', varios2: 'Productos varios 2', canastos: 'Canastos extraíbles', mallas: 'Mallas metálicas',
+};
+const guiasVisuales = (productos.guiasVisuales ?? {}) as Record<string, { tipo?: 'imagen' | 'video'; src: string; alt: string }[]>;
+const productoLista = productos[clave] as unknown[] | undefined;
+---
+
+{listaPersonalizada ? (
+  <TablaPersonalizada lista={listaPersonalizada} guiaVisual={guiasVisuales[`lista:${listaPersonalizada.clave}`] ?? []} />
+) : productoLista ? (
+  <TablaProductos catalogKey={clave} idSection={clave === 'cajasTransporte' ? 'cajas' : clave === 'cajasPeluqueria' ? 'cajas-peluqueria' : clave} titulo={titulos[clave] ?? clave} productos={productoLista} columnas={columnasPorColeccion[clave]} guiaVisual={guiasVisuales[clave] ?? []} />
+) : null}

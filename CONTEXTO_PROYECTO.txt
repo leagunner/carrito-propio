@@ -1,0 +1,323 @@
+CONTEXTO DEL PROYECTO
+Metalurgica Exhibe V2
+Actualizado: 2026-10-02
+
+1. DESCRIPCION GENERAL
+
+Este proyecto es un catalogo web estatico construido con Astro. La pagina muestra productos de Metalurgica Exhibe organizados en distintas secciones y tablas.
+
+La aplicacion se ejecuta con Astro y no utiliza React, Vue ni otro framework de componentes de cliente.
+
+2. COMANDOS PRINCIPALES
+
+Instalar dependencias:
+  npm install
+
+Iniciar el servidor de desarrollo:
+  npm run dev
+
+El script de desarrollo esta configurado como "astro dev --host", por lo que expone el servidor en la red local.
+
+Generar la version de produccion:
+  npm run build
+
+Previsualizar la version compilada:
+  npm run preview
+
+Es necesario abrir la web desde el servidor de Astro, por ejemplo http://localhost:4321. No se debe abrir directamente un index.html mediante file://, porque Astro debe procesar los componentes y el CSS.
+
+3. ESTRUCTURA RELEVANTE
+
+src/pages/index.astro
+  Pagina principal. Importa el layout, el encabezado, el componente de tablas y los datos JSON. Renderiza todas las secciones del catalogo.
+  Usa ordenColecciones para conservar el orden de las colecciones y admite listas personalizadas mediante la clave lista:<clave>.
+  El modal agrega historial y usa la ruta compartible del item. Tambien acepta los enlaces antiguos con ?lista=...&uid=... o ?lista=...&item=....
+
+src/pages/compartir/[tipo]/[coleccion]/[uid].astro
+  Genera una pagina estatica de vista previa por cada producto de las listas originales y por cada fila de listas personalizadas existentes en productos.json durante la compilacion.
+  La ruta usa el tipo (original o lista), la clave estable de la coleccion/lista y el uid del producto/fila; no usa la posicion visible ni depende del orden de filas o columnas.
+  Los metadatos Open Graph y Twitter toman el nombre, la descripcion y la primera imagen de la galeria. Si falta imagen, usan /images/portada1.jpg.
+  La pagina redirige al catalogo para abrir el modal; tambien conserva un enlace visible al catalogo si JavaScript esta desactivado.
+  Formatos de enlace: /compartir/original/<coleccion>/<uid>/ y /compartir/lista/<clave-lista>/<uid>/.
+  Las vistas previas se regeneran con npm run build. Despues de modificar o guardar productos.json, hay que compilar y desplegar de nuevo para actualizar las paginas estaticas.
+
+src/components/ColeccionCatalogo.astro
+  Componente coordinador que resuelve si una clave corresponde a una coleccion original o a una lista personalizada.
+  Selecciona el titulo, las columnas y la guia visual correspondientes y renderiza TablaProductos o TablaPersonalizada.
+
+src/layouts/Layout.astro
+  Layout HTML general. Recibe la propiedad title, genera la estructura doctype/html/head/body y contiene el slot de la pagina.
+  Importa global.css mediante:
+    import '../styles/global.css';
+  Esta importacion es necesaria para que Astro procese y aplique los estilos globales.
+  Genera las etiquetas description, canonical, Open Graph y Twitter. socialImage y socialImageAlt permiten personalizar la imagen social por pagina; la portada del sitio es el valor por defecto.
+
+src/components/Header.astro
+  Encabezado de la web con la marca, enlaces a Facebook, WhatsApp e Instagram y navegacion interna.
+  La navegacion genera enlaces a las colecciones disponibles y sus destinos deben coincidir con el id de cada seccion del catalogo.
+  Los enlaces sociales usan iconos SVG accesibles con aria-label y title, conservando sus destinos y comportamiento de apertura en nueva pestana.
+  El boton "Ver categorias" abre un menu con un estado propio de history; el boton nativo de volver del celular cierra ese menu sin interferir con listas abiertas ni modales.
+
+src/components/TablaProductos.astro
+  Componente reutilizable para renderizar las tablas de productos.
+  Propiedades:
+    - idSection: id HTML de la seccion.
+    - titulo: titulo visible de la seccion.
+    - productos: array de productos.
+    - downloadUrl: opcional; agrega un enlace de descarga.
+    - columnas: opcional; permite definir columnas especificas para cada tipo de producto.
+
+  Si no se proporciona columnas, usa por defecto:
+    Largo, Ancho, Alto, Peso y Precio.
+
+  Puede recibir una guiaVisual opcional para mostrar material editorial de una categoria antes de la tabla y las tarjetas.
+  Esta guia no forma parte de productos.json ni de las galerias de productos.
+  Cada producto abre un modal con galeria tactil, imagenes, videos y enlace de WhatsApp.
+  El modal usa una entrada propia de history para que el boton nativo de volver lo cierre.
+  Al cerrar con la X, backdrop o boton Atras, se desmonta el escenario multimedia para detener
+  por completo cualquier iframe de YouTube.
+
+src/components/GuiaVisual.astro
+  Galeria visual reutilizable para imagenes explicativas de una lista.
+  Usa controles CSS accesibles, miniaturas responsive y JavaScript para cambiar elementos,
+  reproducir videos, deslizar en touch y gestionar el modal de zoom.
+  Admite imagenes existentes y videos de YouTube. Los videos muestran la miniatura automatica
+  de YouTube en el selector y cargan un iframe reproducible dentro del escenario activo.
+  La imagen principal se muestra completa en escritorio y mobile; las miniaturas se desplazan horizontalmente en mobile.
+
+productos.json
+  Puede incluir el bloque opcional guiasVisuales, indexado por la clave de una lista original
+  o por lista:clave para una lista personalizada. Sus elementos tienen src y alt y no forman parte de galeria.
+  Los videos usan tipo: video, src con una URL valida de YouTube y alt; las imagenes antiguas sin tipo
+  se mantienen compatibles y se interpretan como tipo imagen.
+
+  Tambien:
+    - Formatea precios como pesos argentinos usando Intl.NumberFormat('es-AR').
+    - Muestra --- cuando un valor o precio es null, undefined o vacio.
+    - Si un producto tiene media, renderiza un boton con el indicador de video/foto.
+    - Abre un modal de detalle con galeria de imagenes y videos.
+    - El boton nativo de volver del navegador/celular cierra el modal mediante history y popstate.
+    - La galeria tactil usa una pista de tres posiciones: contenido anterior, actual y siguiente.
+    - Durante el arrastre, el contenido vecino permanece visible junto al actual y se mueve con el dedo.
+    - Cada gesto valido avanza o retrocede una sola posicion; no se reemplaza el contenido despues del gesto con una animacion independiente.
+    - Los videos de YouTube se integran como iframe y se muestran dentro de la misma pista tactil.
+
+src/components/TablaPersonalizada.astro
+  Modal equivalente para filas de listas personalizadas.
+  Mantiene la misma galeria tactil de tres posiciones, navegacion por flechas, soporte de video,
+  cierre mediante el boton atras del navegador/celular y desmontaje del iframe al cerrar.
+
+src/data/productos.json
+  Fuente de datos del catalogo. Actualmente contiene estas colecciones:
+    - jaulas
+    - cajasTransporte
+    - cajasPeluqueria
+    - corrales
+    - cercos
+    - aves
+    - racks
+    - parideras
+    - varios1
+    - varios2
+    - canastos
+    - mallas
+
+  No cambiar los nombres de las colecciones sin actualizar tambien index.astro.
+  El JSON actual incluye guiasVisuales para jaulas y cajasTransporte. Las guias se mantienen separadas de las galerias de productos y filas.
+
+Administrador de listas/app.py
+  Aplicacion de escritorio para editar productos.json. Al iniciar, carga automaticamente
+  src/data/productos.json calculando la ruta desde la ubicacion de app.py, por lo que la
+  raiz absoluta del proyecto puede cambiar entre computadoras. El boton "Elegir lista JSON"
+  permite seleccionar manualmente otro archivo cuando sea necesario.
+  Incluye botones para exportar precios a Excel e importar precios desde Excel identificando
+  cada producto por coleccion e id, sin depender del orden de las filas.
+  En listas personalizadas, la numeracion visible de las filas se calcula por posicion actual,
+  no desde el id persistido. Al borrar una fila, las restantes se muestran consecutivamente
+  sin modificar sus id ni uid; estos identificadores siguen siendo internos para reconocer
+  filas, abrir sus modales y conservar referencias.
+
+src/styles/global.css
+  Hoja de estilos globales con estetica Industrial Moderna: fondo carbon, superficies oscuras, texto claro y naranja industrial como acento.
+  Define estilos del cuerpo, encabezado, navegacion, secciones, tablas, precios, tarjetas y botones.
+  Se carga desde Layout.astro, no mediante una ruta estatica /styles/global.css.
+  Las tarjetas de productos en mobile usan .mobile-product-card, con borde naranja y elevacion sutil al pasar el cursor o enfocar su contenido.
+  Las imagenes de tarjeta se muestran dentro de .mobile-product-image-frame, que contiene un zoom interno suave en hover.
+  Los nombres de producto usan el naranja industrial y los precios usan el ambar --color-price (#FFC857), con mayor tamano en mobile.
+  El boton flotante de categorias (.menu-toggle) permanece en la esquina inferior derecha, respetando el area segura inferior en moviles.
+  En mobile, .header-container apila y centra la marca, el subtitulo y los enlaces sociales; este ajuste no modifica el nav.
+  Los iconos sociales tienen un area tactil estable de 2.6rem y estados hover/focus con acento naranja industrial.
+  En mobile, el titulo sticky de una lista abierta se fija al borde superior mediante top: 0 y scroll-margin-top: 0.
+  Los modales usan una superficie oscura elevada, galeria casi negra, controles con acento naranja, precio ambar y WhatsApp verde semantico.
+  Las flechas del modal usan naranja durante hover en escritorio y mientras se pulsan; en mobile recuperan su estado oscuro despues del toque y el foco se indica con contorno.
+  La galeria usa .gallery-stage como superficie tactil y .gallery-track/.gallery-slide para mover simultaneamente el contenido actual y el contenido vecino.
+  Los botones laterales invisibles de la galeria no interceptan el tacto; se mantienen las flechas visibles.
+  La guia visual de categorias usa una superficie oscura elevada, borde gris y acento naranja para integrarse con el tema.
+
+Administrador de listas
+  La coleccion seleccionada muestra el boton "Administrar imagenes explicativas".
+  Permite agregar varias imagenes, videos de YouTube, reordenar elementos y quitar la seleccionada.
+  El boton "Editar texto descriptivo" permite modificar el alt accesible de la imagen o video seleccionado.
+  Las imagenes se guardan en public/images/explicaciones/<clave-lista>/ y las rutas se escriben en guiasVisuales.
+  El administrador muestra una vista previa de la guia explicativa con el mismo visualizador de las galerias de productos:
+  selecciona la primera entrada al abrir, cambia la vista al seleccionar otra y selecciona automaticamente las imagenes recien agregadas.
+  Las imagenes explicativas nuevas se guardan con tipo: imagen. Las imagenes antiguas sin tipo se interpretan como imagen,
+  mientras que los elementos con tipo: video se muestran como videos de YouTube.
+  La importacion de imagenes aplica la orientacion EXIF antes de redimensionar y convertir a WebP, evitando que las fotos verticales
+  aparezcan rotadas 90 grados. Esto se aplica a imagenes de productos y a imagenes explicativas.
+
+4. SECCIONES ACTUALES EN index.astro
+
+- jaulas: Caniles. Usa las columnas por defecto.
+- cajas: Cajas de transporte. Usa las columnas por defecto y los datos cajasTransporte.
+- cajas-peluqueria: Cajas de transporte y mesa de peluqueria. Usa columnas por defecto.
+- corrales: Corrales. Usa Alto, Ancho, Panos, Diametro, Puerta, Peso y Precio.
+- cercos: Cercos lineales y modulos. Usa Alto, Ancho, Panos, Puerta, Peso y Precio.
+- aves: Jaulas para aves. Usa columnas por defecto.
+- racks: Racks apilables. Usa Altura, Diametro, Almacena hasta y Precio.
+- parideras: Parideras y piletas. Usa columnas por defecto.
+- varios-1: Productos varios 1. Usa columnas por defecto.
+- varios-2: Productos varios 2. Usa columnas por defecto.
+- canastos: Canastos extraibles. Usa columnas por defecto.
+- mallas: Mallas metalicas. Usa Cuadricula, Ancho, Alto, Peso, Precio zincado y Precio crudo.
+
+5. TIPOS DE DATOS DEL COMPONENTE
+
+Producto admite, entre otros, estos campos:
+  id, nombre, largo, ancho, alto, peso, precio, panos, diametro, puerta, altura, capacidad, cuadricula, precioZincado, precioCrudo y media.
+
+Los campos dimensionales son opcionales porque cada categoria tiene una estructura diferente.
+
+6. CONFIGURACION
+
+package.json:
+  - Astro version declarada: ^7.3.1
+  - Node requerido: >=22.12.0
+  - type: module
+
+astro.config.mjs utiliza defineConfig({}) con la Astro Dev Toolbar desactivada mediante `devToolbar.enabled = false`.
+La barra de desarrollo de Astro no forma parte de la interfaz de la web y no debe reactivarse salvo solicitud expresa.
+
+7. HISTORIAL DE PROBLEMAS RESUELTOS
+
+La pagina inicialmente quedaba en blanco porque index.astro contenia solamente la estructura HTML del layout y un slot, pero no renderizaba Header ni TablaProductos.
+
+La solucion fue:
+  - Convertir index.astro en la pagina real del catalogo.
+  - Hacer que index.astro utilice Layout.astro.
+  - Importar Header, TablaProductos y productos.json.
+  - Importar global.css desde Layout.astro.
+  - Evitar el enlace incorrecto /styles/global.css, porque el archivo real esta en src/styles/global.css y debe ser procesado por Astro.
+
+Otro ajuste fue alinear la pagina con las colecciones realmente presentes en productos.json. El proyecto ahora contiene mas categorias que en el estado inicial.
+
+La interaccion de galeria fue refinada y confirmada el 2026-09-19:
+  - El swipe horizontal funciona en imagenes y videos.
+  - El iframe de YouTube no debe impedir el gesto tactil en dispositivos moviles.
+  - El arrastre respeta la direccion real del dedo y muestra el siguiente/anterior contenido pegado durante el gesto.
+  - La transicion se completa desde la posicion que dejo el dedo y no debe cargar la imagen nueva con una animacion opuesta posterior.
+  - Las imagenes verticales del modal deben conservar su relacion de aspecto y mostrarse completas dentro del area disponible, sin recorte.
+  - La primera imagen de `galeria` es tambien la miniatura de la pantalla principal y debe mostrarse como `1 / total` al abrir el modal.
+  - La pista de tres diapositivas debe iniciar centrada en la imagen actual (`-100%`), evitando saltar la primera imagen o dejar vacia la ultima posicion.
+
+La navegacion de listas en movil fue refinada y confirmada el 2026-09-19:
+  - Al pulsar el boton nativo de volver atras con una lista abierta, la pagina vuelve animadamente al comienzo de esa lista.
+  - La animacion se ejecuta manualmente con `requestAnimationFrame`, desde la ultima posicion estable del usuario hasta el encabezado de la lista.
+  - La duracion se adapta a la distancia y usa aceleracion/desaceleracion suave.
+  - Las listas cerradas no provocan desplazamiento al pulsar volver atras.
+  - Si hay un modal abierto, el boton volver atras mantiene prioridad para cerrar el modal.
+  - Si la lista ya esta en su comienzo y se pulsa volver atras otra vez, la lista abierta se cierra.
+  - El guard de historial se conserva mientras la lista esta abierta, permitiendo repetir el ciclo despues de volver a desplazarse hacia abajo.
+
+El cierre de modales y la reproduccion de videos fueron corregidos y confirmados el 2026-09-22:
+  - Al cerrar un modal de producto con la X o pulsando fuera, la lista permanece abierta.
+  - El boton nativo de volver del celular cierra solo el modal y deja abierta la lista.
+  - El controlador de secciones ignora el popstate generado especificamente por el cierre iniciado desde el modal.
+  - Al cerrar un modal se vacia `.gallery-stage` y se desmonta el iframe de YouTube, deteniendo su audio y reproduccion.
+  - El comportamiento se aplica a TablaProductos.astro y TablaPersonalizada.astro.
+
+El administrador de imagenes explicativas fue refinado y confirmado el 2026-09-23:
+  - La pantalla de administracion usa el mismo panel de vista previa que las galerias de items.
+  - Al seleccionar una imagen explicativa, la vista previa cambia aunque la primera entrada de la lista sea un video.
+  - Las imagenes sin tipo de guiasVisuales existentes se mantienen compatibles y se tratan como imagenes.
+  - Las imagenes nuevas se registran explicitamente con tipo: imagen.
+  - La orientacion EXIF se corrige durante la importacion para conservar la posicion vertical de las fotos.
+
+La numeracion de filas de listas personalizadas fue refinada y confirmada el 2026-09-25:
+  - El administrador muestra la posicion actual de cada fila como "Fila 1", "Fila 2", etc.,
+    incluyendo la lista de elementos, el editor de filas y el constructor de listas nuevas.
+  - La web muestra esa numeracion consecutiva en la tabla, las tarjetas mobile, el encabezado de respaldo del modal
+    y el mensaje de consulta por WhatsApp.
+  - Los campos id y uid no se renumeran ni se reemplazan. Los atributos data-row-id/data-row-uid y la apertura
+    de modales siguen usando los identificadores persistidos; uid conserva la identidad estable de la fila.
+  - Se comprobo con la lista ofertas: las filas mantienen ids internos 1, 3, 4, 5 y 6, mientras la numeracion
+    visible tanto en escritorio como en mobile es 1, 2, 3, 4 y 5.
+
+Los enlaces compartibles de productos y filas fueron implementados y compilados el 2026-10-02:
+  - Al abrir un item, la URL del navegador usa /compartir/original/<coleccion>/<uid>/ o /compartir/lista/<clave-lista>/<uid>/.
+  - Astro genera estas paginas desde los datos actuales del JSON, por lo que incluye productos y listas personalizadas nuevos en la siguiente compilacion.
+  - La identificacion se basa en uid y no en el orden visible; mover items, agregar columnas o editar sus textos no cambia la identidad del enlace.
+  - Cada pagina incluye metadatos Open Graph y Twitter con la descripcion del producto/fila y la primera imagen. Sin imagen usa public/images/portada1.jpg.
+  - Al abrir la pagina de vista previa en el navegador, JavaScript redirige al enlace del catalogo para abrir el modal del item.
+  - Los enlaces anteriores con parametros ?lista=...&uid=... o ?lista=...&item=... siguen abriendo el modal, pero para la vista previa social propia se debe compartir la nueva ruta /compartir/....
+  - Se verifico la compilacion estatica: se generaron 154 paginas de vista previa con el catalogo de ese momento.
+  - Si se elimina un item o una lista, la siguiente compilacion deja de generar su pagina. Para conservar enlaces de items borrados haria falta un historial de datos, actualmente no implementado.
+
+El menu de compartir de los modales fue implementado el 2026-10-02:
+  - Los modales de productos originales y filas personalizadas ofrecen WhatsApp, Facebook, Instagram y Copiar enlace.
+  - WhatsApp y Facebook abren sus pantallas para compartir con el enlace permanente del item. Instagram copia el enlace y muestra una indicacion para pegarlo en la app.
+  - Copiar enlace cierra el menu y anuncia el resultado en un mensaje accesible dentro del modal.
+  - Abrir el menu agrega una entrada al historial: el boton nativo Atras del celular o Escape cierra primero el menu; una segunda accion cierra el modal.
+  - Tocar fuera del menu lo cierra. El cambio no instala dependencias externas.
+
+El menu de categorias fue refinado y confirmado el 2026-09-19:
+  - Abrir "Ver categorias" crea una entrada propia de history.
+  - El boton nativo de volver cierra el menu de categorias.
+  - Cerrar con el boton, la cruz o Escape mantiene el historial sin estados residuales.
+
+El estilo visual Industrial Moderno fue aplicado y confirmado el 2026-09-19:
+  - La interfaz usa modo oscuro con fondo carbon #121212, superficies elevadas y texto claro.
+  - El naranja industrial #FF6600 y su variante clara se reservan para precios, botones, enlaces y estados interactivos.
+  - Las tarjetas de productos mobile tienen apariencia robusta, borde iluminado en hover y zoom interno suave de la imagen.
+  - El boton flotante "Ver categorias" se ubica abajo a la derecha para no cubrir la marca del encabezado.
+  - En mobile, la marca y los enlaces sociales del header quedan centrados y adaptables a varias lineas.
+  - Los precios se diferencian de los nombres mediante el ambar industrial #FFC857 y aumentan de tamano en mobile.
+  - Los titulos sticky de las listas abiertas quedan pegados al borde superior de la pantalla.
+  - Los modales mantienen el modo oscuro, con cierre y flechas tecnicas, estados de foco y boton WhatsApp verde.
+  - Las flechas del modal no quedan naranjas despues de pulsarse en mobile.
+  - Los enlaces de Facebook, WhatsApp e Instagram se muestran como iconos SVG accesibles y compactos.
+  - La lista de Caniles muestra una guia visual editorial con las imagenes de `public/images/explicaciones/caniles/`.
+  - Las imagenes explicativas se registran en `productos.json` dentro de `guiasVisuales`, separadas de las galerias de productos y filas.
+  - La guia visual se puede reutilizar en futuras listas mediante la clave administrada desde el programa.
+  - El administrador gestiona guiasVisuales para listas originales y personalizadas sin cambiar la estructura de sus productos o filas.
+  - Las guias explicativas admiten videos de YouTube con miniatura automatica y reproduccion mediante iframe dentro del escenario activo.
+  - Este comportamiento fue comprobado y confirmado como correcto en escritorio y mobile el 2026-09-19.
+  - En mobile, las zonas laterales transparentes permiten deslizar entre elementos sin bloquear los controles del reproductor de YouTube.
+  - En escritorio, el deslizamiento y el cursor de arrastre estan deshabilitados; el reproductor conserva sus controles normales.
+  - Al pulsar una imagen explicativa se abre un modal coherente con el diseño general, con la imagen centrada verticalmente.
+  - El modal permite zoom con botones, rueda y pellizco; el porcentaje mostrado coincide con la escala visual.
+  - El zoom de dos dedos se mantiene centrado y, al terminarlo, un dedo puede desplazar la imagen ampliada sin saltos.
+  - Este comportamiento del modal fue comprobado y confirmado como correcto el 2026-09-19.
+
+La activacion de elementos de la guia visual fue corregida el 2026-09-19:
+  - Cada control activa directamente su imagen o video asociado.
+  - Las guias ya no quedan limitadas a cinco elementos; un sexto video u otros elementos posteriores tambien se muestran correctamente.
+
+8. RECOMENDACIONES PARA FUTUROS CAMBIOS
+
+- Leer AGENTS.md antes de modificar el proyecto.
+- Mantener los nombres de idSection, enlaces del Header y claves del JSON sincronizados.
+- Para nuevas categorias, agregar primero la coleccion al JSON, luego la seccion en index.astro y finalmente el enlace del Header si debe aparecer en la navegacion.
+- Usar columnas personalizadas cuando una categoria no comparta los campos Largo, Ancho, Alto, Peso y Precio.
+- No mover global.css a public ni agregar un link manual a /styles/global.css salvo que se cambie deliberadamente la estrategia de estilos.
+- Ejecutar npm run build despues de cambios en componentes, datos o configuracion.
+- Despues de guardar cambios del catalogo en el administrador, volver a compilar y desplegar para actualizar las vistas previas sociales de /compartir/.
+- No cambiar ni regenerar el uid de un item existente si se desea conservar su enlace compartible. Los items nuevos reciben un uid nuevo.
+- Compartir las rutas /compartir/ para que las redes lean los metadatos estaticos; los enlaces antiguos con query string se mantienen por compatibilidad de navegacion.
+- No abrir el HTML generado directamente desde el explorador de archivos; usar el servidor de desarrollo o npm run preview.
+
+9. FLUJO DE CONFIRMACION DE CAMBIOS
+
+- El usuario confirmo como correctos los cambios visuales realizados hasta el 2026-09-19, incluidos los cambios sin respuesta individual.
+- El usuario confirmo como correcto el cierre del video de YouTube al cerrar el modal el 2026-09-22.
+- Las futuras actualizaciones deben documentarse aqui cuando el usuario las confirme de forma explicita o global.
