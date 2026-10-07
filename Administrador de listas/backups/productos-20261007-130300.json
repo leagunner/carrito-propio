@@ -782,39 +782,9 @@
       "descripcion": "Jaula Trampa de 100x60x60 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
       "galeria": [
         {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125336~2.webp",
-          "alt": "IMG_20261007_125336~2"
-        },
-        {
           "tipo": "video",
-          "src": "https://youtube.com/shorts/25aHYMaYuqQ?si=5OMsCLtgZXjs7W-0",
+          "src": "https://youtube.com/shorts/_Mw-KMhKzf0?si=u_7I-_YZse5-KfKH",
           "alt": "Video del producto"
-        },
-        {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125343~2.webp",
-          "alt": "IMG_20261007_125343~2"
-        },
-        {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125353~2.webp",
-          "alt": "IMG_20261007_125353~2"
-        },
-        {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125410~2.webp",
-          "alt": "IMG_20261007_125410~2"
-        },
-        {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125437.webp",
-          "alt": "IMG_20261007_125437"
-        },
-        {
-          "tipo": "imagen",
-          "src": "/images/jaulas/IMG_20261007_125427.webp",
-          "alt": "IMG_20261007_125427"
         }
       ],
       "uid": "f154d9c85cda463e854e2bceb1db6684"
