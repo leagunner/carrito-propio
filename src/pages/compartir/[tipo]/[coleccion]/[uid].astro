@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import catalog from '../../../../data/productos.json';
+import { getSharePreviewPath, isLocalPublicImage } from '../../../../lib/share-preview-path.mjs';
 
 interface MediaItem {
   tipo?: 'imagen' | 'video';
@@ -72,6 +73,11 @@ export function getStaticPaths() {
     const sharePath = `/compartir/${entry.tipo}/${encodeURIComponent(entry.collectionKey)}/${encodeURIComponent(entry.itemId)}/`;
     const canonical = new URL(sharePath, siteUrl).toString();
     const image = entry.media?.find((item) => item.tipo === 'imagen' || !item.tipo);
+    const socialImage = image?.src
+      ? isLocalPublicImage(image.src)
+        ? getSharePreviewPath(entry.tipo, entry.collectionKey, entry.itemId)
+        : image.src
+      : '/images/portada1.jpg';
     const modalUrl = new URL('/', siteUrl);
     modalUrl.searchParams.set('lista', entry.listKey);
     modalUrl.searchParams.set(entry.usesUid ? 'uid' : 'item', entry.itemId);
@@ -87,7 +93,7 @@ export function getStaticPaths() {
         sectionId: entry.sectionId,
         title: entry.title,
         description: entry.description?.trim() || undefined,
-        image: toAbsoluteUrl(image?.src ?? '/images/portada1.jpg'),
+        image: toAbsoluteUrl(socialImage),
         imageAlt: image?.alt?.trim() || entry.title,
         canonical,
         modalHref: `${modalUrl.pathname}${modalUrl.search}${modalUrl.hash}`,

@@ -6,13 +6,18 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "predev": "node scripts/generate-share-previews.mjs",
     "dev": "astro dev --host",
+    "prebuild": "node scripts/generate-share-previews.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^7.3.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   },
   "allowScripts": {
     "esbuild": true
