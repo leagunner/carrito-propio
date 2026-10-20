@@ -1,5 +1,6 @@
 {
   "ordenColecciones": [
+    "lista:oferta-cajones-para-vajillas",
     "lista:ofertas",
     "jaulas",
     "cajasTransporte",
@@ -213,6 +214,13 @@
         "tipo": "imagen",
         "src": "/images/explicaciones/lista-ofertas/file_0000000026b4820eaff4b00ba686a1d8.webp",
         "alt": "file_0000000026b4820eaff4b00ba686a1d8"
+      }
+    ],
+    "lista:oferta-cajones-para-vajillas": [
+      {
+        "tipo": "imagen",
+        "src": "/images/explicaciones/lista-oferta-cajones-para-vajillas/file_000000008034820eb9d8711aa41ba170.webp",
+        "alt": "file_000000008034820eb9d8711aa41ba170"
       }
     ]
   },
@@ -2342,6 +2350,50 @@
       "descripcion": "Base (Común) de 80x80x75 cm. Consulta disponibilidad, medidas y terminaciones con nuestro equipo.",
       "galeria": [],
       "uid": "6f63158dd5e747dca283be853b3b3631"
+    },
+    {
+      "id": 15,
+      "nombre": "Jaula Pollitos",
+      "largo": 100,
+      "ancho": 50,
+      "alto": 40,
+      "peso": "9,6 Kg",
+      "precio": 142000,
+      "media": null,
+      "descripcion": "Jaula Pollitos de 100x50x40 cm. Con 2 puertas guillotina, 2cm de separacion entre alambres",
+      "galeria": [
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20261020_092049~2-2.webp",
+          "alt": "IMG_20261020_092049~2"
+        },
+        {
+          "tipo": "video",
+          "src": "https://youtube.com/shorts/tS6PWbml_Wk?si=qlN1COz6uR-YODDb",
+          "alt": "Video del producto"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20261020_092058~2-2.webp",
+          "alt": "IMG_20261020_092058~2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20261020_092108~2-2.webp",
+          "alt": "IMG_20261020_092108~2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20261020_092135~2-2.webp",
+          "alt": "IMG_20261020_092135~2"
+        },
+        {
+          "tipo": "imagen",
+          "src": "/images/aves/IMG_20261020_092156~2-2.webp",
+          "alt": "IMG_20261020_092156~2"
+        }
+      ],
+      "uid": "10f3f46b027a474a86ad7fe2e84b5b73"
     }
   ],
   "racks": [
@@ -3955,6 +4007,262 @@
               "tipo": "imagen",
               "src": "/images/listas/file_0000000035b0820eaa3499b4b1752ae0.webp",
               "alt": "file_0000000035b0820eaa3499b4b1752ae0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "clave": "oferta-cajones-para-vajillas",
+      "titulo": "Oferta Cajones para vajillas",
+      "columnas": [
+        {
+          "clave": "columna-1",
+          "nombre": "Producto"
+        },
+        {
+          "clave": "columna-2",
+          "nombre": "Medida del cajón"
+        },
+        {
+          "clave": "columna-3",
+          "nombre": "Capacidad"
+        },
+        {
+          "clave": "columna-4",
+          "nombre": "Apto para"
+        },
+        {
+          "clave": "columna-5",
+          "nombre": "Precio"
+        }
+      ],
+      "filas": [
+        {
+          "id": 1,
+          "uid": "5294cd5f2bc54349ad1d0fcd7184dc1d",
+          "descripcion": "Altura de cuadrícula 11cm. 9 en stock",
+          "celdas": {
+            "columna-1": "Porta Vaso",
+            "columna-2": "70x45x20",
+            "columna-3": "40 vasos",
+            "columna-4": "Vasos 18x8cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "uid": "d13983ea915b4db9be9652f116f208fb",
+          "descripcion": "Altura de cuadrícula 8,5cm. 1 en stock",
+          "celdas": {
+            "columna-1": "Porta Vaso",
+            "columna-3": "35 vasos",
+            "columna-4": "Vasos 16x7,5cm",
+            "columna-2": "62x42x18",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-2.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "uid": "545bd952aebe4481bffd736186c57768",
+          "descripcion": "Altura de cuadrícula 9cm. 1 en stock",
+          "celdas": {
+            "columna-5": "20000",
+            "columna-1": "Porta Vaso",
+            "columna-2": "70x45x16,5",
+            "columna-3": "40 vasos",
+            "columna-4": "Vasos 14,5x7,5cm"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-3.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "uid": "da51b3f843e74708bc96f25f945afb22",
+          "descripcion": "Altura de cuadrícula 4,5cm. 3 en stock",
+          "celdas": {
+            "columna-1": "Porta Vasos",
+            "columna-2": "70x45x9",
+            "columna-3": "28 vasos",
+            "columna-4": "Vasos 7x8cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-4.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "uid": "aab549d884064cf89cd1e15e3dfaaf32",
+          "descripcion": "Altura de cuadrícula 18,5cm. 2 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "68x45x27",
+            "columna-3": "54 copas",
+            "columna-4": "Copas 25x6,5cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-5.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "uid": "8c9ffb8bdafa40d28a17b7b81775ca89",
+          "descripcion": "Altura de cuadrícula 18cm. 1 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "70x45x24",
+            "columna-3": "40 copas",
+            "columna-4": "Copas 22x8cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-6.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "uid": "1ec4d0c4b78040a392c8613ec40e3980",
+          "descripcion": "Altura de cuadrícula 18cm. 1 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "68x43x24",
+            "columna-3": "28 copas",
+            "columna-4": "Copas 22x9cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-7.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "uid": "d79e1de0906e467eac386bcce405523c",
+          "descripcion": "Altura de cuadrícula 13cm. 2 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "70x45x20",
+            "columna-3": "40 copas",
+            "columna-4": "Copas 18x7,5cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-8.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "uid": "d5b343b91f854bbcb64b455f2fca6156",
+          "descripcion": "Altura de cuadrícula 18cm. 2 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "70x45x25",
+            "columna-3": "40 copas",
+            "columna-4": "Copas 23x7,5cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-9.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "uid": "edcff45fd609472a9705c689e34be89a",
+          "descripcion": "Altura de cuadrícula 8,5cm. 1 en stock",
+          "celdas": {
+            "columna-1": "Porta Copas",
+            "columna-2": "70x45x14",
+            "columna-3": "40 copas",
+            "columna-4": "Copas 12x7,5cm",
+            "columna-5": "20000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103820-10.webp",
+              "alt": "IMG_20261016_103820"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "uid": "e2219b637ff346a1b0c4a28f59727d4b",
+          "descripcion": "Altura de cuadrícula 10,5cm. 11 en stock",
+          "celdas": {
+            "columna-1": "Porta Jarras",
+            "columna-4": "Jarras 20x13,5cm",
+            "columna-5": "12000",
+            "columna-2": "44x29x22",
+            "columna-3": "6 jarras"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103805.webp",
+              "alt": "IMG_20261016_103805"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "uid": "2e80dc1ee9e64f2f8b904cc343c11bcc",
+          "descripcion": "Altura de cuadrícula 12cm. 2 en stock",
+          "celdas": {
+            "columna-1": "Porta Jarras",
+            "columna-2": "55x38x23",
+            "columna-3": "6 jarras",
+            "columna-4": "Jarras 22x12cm",
+            "columna-5": "12000"
+          },
+          "galeria": [
+            {
+              "tipo": "imagen",
+              "src": "/images/listas/IMG_20261016_103805-2.webp",
+              "alt": "IMG_20261016_103805"
             }
           ]
         }

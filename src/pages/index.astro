@@ -274,5 +274,16 @@ const schema = {
   const initialModalRequest = getModalRequestFromUrl();
   if (initialModalRequest) {
     window.setTimeout(() => openModalFromUrl(initialModalRequest, { replaceBase: true }), 0);
+  } else {
+    window.setTimeout(() => {
+      const hash = window.location.hash.slice(1);
+      const section = catalogSectionMap.find((entry) => (
+        entry.sectionId === hash || encodeURIComponent(entry.sectionId) === hash
+      ));
+      if (!section) return;
+      document.dispatchEvent(new CustomEvent('catalog:open-section', {
+        detail: { sectionId: section.sectionId, preserveHistory: true },
+      }));
+    }, 0);
   }
 </script>

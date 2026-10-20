@@ -55,7 +55,7 @@ for (const entry of entries) {
       .rotate()
       .resize(1200, 630, {
         fit: 'contain',
-        background: { r: 255, g: 255, b: 255, alpha: 1 },
+        background: { r: 0, g: 0, b: 0, alpha: 1 },
       })
       .jpeg({ quality: 85 })
       .toFile(outputPath);

@@ -1,6 +1,6 @@
 CONTEXTO DEL PROYECTO
 Metalurgica Exhibe V2
-Actualizado: 2026-10-02
+Actualizado: 2026-10-20
 
 1. DESCRIPCION GENERAL
 
@@ -17,9 +17,13 @@ Iniciar el servidor de desarrollo:
   npm run dev
 
 El script de desarrollo esta configurado como "astro dev --host", por lo que expone el servidor en la red local.
+Antes de iniciar Astro, npm ejecuta predev y genera las imagenes de vista previa para compartir.
 
 Generar la version de produccion:
   npm run build
+
+Antes de compilar, npm ejecuta prebuild y genera las imagenes de vista previa para compartir.
+El generador requiere la dependencia Sharp, incluida en package.json y package-lock.json.
 
 Previsualizar la version compilada:
   npm run preview
@@ -32,14 +36,18 @@ src/pages/index.astro
   Pagina principal. Importa el layout, el encabezado, el componente de tablas y los datos JSON. Renderiza todas las secciones del catalogo.
   Usa ordenColecciones para conservar el orden de las colecciones y admite listas personalizadas mediante la clave lista:<clave>.
   El modal agrega historial y usa la ruta compartible del item. Tambien acepta los enlaces antiguos con ?lista=...&uid=... o ?lista=...&item=....
+  Al abrir directamente un enlace con el ancla de una coleccion, expande esa lista. Si el enlace incluye un producto, abre el modal y expande su lista.
 
 src/pages/compartir/[tipo]/[coleccion]/[uid].astro
   Genera una pagina estatica de vista previa por cada producto de las listas originales y por cada fila de listas personalizadas existentes en productos.json durante la compilacion.
   La ruta usa el tipo (original o lista), la clave estable de la coleccion/lista y el uid del producto/fila; no usa la posicion visible ni depende del orden de filas o columnas.
-  Los metadatos Open Graph y Twitter toman el nombre, la descripcion y la primera imagen de la galeria. Si falta imagen, usan /images/portada1.jpg.
+  Los metadatos Open Graph y Twitter toman el nombre, la descripcion y una imagen social generada desde la primera imagen local de la galeria.
+  El generador scripts/generate-share-previews.mjs crea JPG de 1200x630 con relleno negro para respetar la proporcion original.
+  Las imagenes se guardan en public/images/share-previews/ durante predev/prebuild; la carpeta esta ignorada por Git y se regenera automaticamente.
+  Si la galeria no tiene imagen usa /images/portada1.jpg; las imagenes remotas se usan sin conversion.
   La pagina redirige al catalogo para abrir el modal; tambien conserva un enlace visible al catalogo si JavaScript esta desactivado.
   Formatos de enlace: /compartir/original/<coleccion>/<uid>/ y /compartir/lista/<clave-lista>/<uid>/.
-  Las vistas previas se regeneran con npm run build. Despues de modificar o guardar productos.json, hay que compilar y desplegar de nuevo para actualizar las paginas estaticas.
+  Despues de modificar o guardar productos.json, hay que compilar y desplegar de nuevo para actualizar las paginas estaticas y las imagenes sociales.
 
 src/components/ColeccionCatalogo.astro
   Componente coordinador que resuelve si una clave corresponde a una coleccion original o a una lista personalizada.
@@ -73,6 +81,7 @@ src/components/TablaProductos.astro
   Puede recibir una guiaVisual opcional para mostrar material editorial de una categoria antes de la tabla y las tarjetas.
   Esta guia no forma parte de productos.json ni de las galerias de productos.
   Cada producto abre un modal con galeria tactil, imagenes, videos y enlace de WhatsApp.
+  En mobile, el video de YouTube admite interaccion directa y se puede cambiar de contenido deslizando desde las franjas laterales.
   El modal usa una entrada propia de history para que el boton nativo de volver lo cierre.
   Al cerrar con la X, backdrop o boton Atras, se desmonta el escenario multimedia para detener
   por completo cualquier iframe de YouTube.
@@ -100,7 +109,7 @@ productos.json
     - La galeria tactil usa una pista de tres posiciones: contenido anterior, actual y siguiente.
     - Durante el arrastre, el contenido vecino permanece visible junto al actual y se mueve con el dedo.
     - Cada gesto valido avanza o retrocede una sola posicion; no se reemplaza el contenido despues del gesto con una animacion independiente.
-    - Los videos de YouTube se integran como iframe y se muestran dentro de la misma pista tactil.
+    - Los videos de YouTube se integran como iframe. En mobile, el reproductor recibe los toques en el centro y las franjas laterales permiten deslizar la galeria.
 
 src/components/TablaPersonalizada.astro
   Modal equivalente para filas de listas personalizadas.

@@ -950,7 +950,7 @@ tr:hover {
 
 .gallery-arrow {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--color-border);
@@ -1391,7 +1391,14 @@ tr:hover {
 
   .gallery-stage iframe {
     width: 100%;
-    pointer-events: none;
+    pointer-events: auto;
+  }
+
+  .gallery-zone {
+    display: block;
+    width: 18%;
+    pointer-events: auto;
+    touch-action: pan-y;
   }
 
   .product-details {
